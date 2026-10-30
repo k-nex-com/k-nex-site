@@ -3,157 +3,218 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>K-NEX</title>
-<meta name="description" content="K-NEX builds simple cloud tools for people who would rather not deal with IT.">
-<meta property="og:title" content="K-NEX">
-<meta property="og:description" content="We do the hard part. You press one button.">
-<meta property="og:url" content="https://k-nex.com">
-<meta name="theme-color" content="#fafaf8">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23111'/%3E%3Cpath d='M9 8v16M9 16l8-8M9 16l8 8M20 16h4' stroke='%23fafaf8' stroke-width='2.6' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
+<title>K-NEX — Next-generation IT, made simple</title>
+<meta name="description" content="K-NEX turns powerful, expert-only technology into simple apps anyone can use. First product: Dropbox Exit Helper.">
+<meta property="og:title" content="K-NEX — Next-generation IT, made simple">
+<meta property="og:description" content="Next-generation tech. One click away.">
+<meta property="og:url" content="https://k-nex.com/">
+<meta name="theme-color" content="#07080A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #fafaf8;
-    --fg: #111;
-    --muted: #6b6b66;
-    --line: #e4e4df;
-    --accent: #2f5bea;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #111110;
-      --fg: #ededea;
-      --muted: #8f8f89;
-      --line: #2a2a27;
-      --accent: #7c9bff;
-    }
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { -webkit-text-size-adjust: 100%; }
-  body {
-    background: var(--bg);
-    color: var(--fg);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    line-height: 1.65;
-        min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  .wrap {
-    width: 100%;
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-  header { padding: 32px 0; }
-  .logo {
-    font-weight: 800;
-    font-size: 18px;
-    letter-spacing: 0.04em;
-    color: var(--fg);
-    text-decoration: none;
-  }
-  .logo span { color: var(--accent); }
-
-  main { flex: 1; padding: 12vh 0 10vh; }
-  h1 {
-    font-size: clamp(32px, 7vw, 52px);
-    line-height: 1.2;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-  }
-  .lead {
-    margin-top: 24px;
-    font-size: 18px;
-    color: var(--muted);
-    max-width: 30em;
-  }
-
-  section { margin-top: 12vh; }
-  .label {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--line);
-  }
-  .item {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 4px 16px;
-    padding: 20px 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .item h2 { font-size: 18px; font-weight: 700; }
-  .item p { grid-column: 1 / -1; color: var(--muted); font-size: 15px; }
-  .tag {
-    align-self: center;
-    font-size: 12px;
-    color: var(--accent);
-    border: 1px solid currentColor;
-    border-radius: 999px;
-    padding: 2px 10px;
-    white-space: nowrap;
-  }
-
-  .principles { list-style: none; }
-  .principles li {
-    padding: 16px 0;
-    border-bottom: 1px solid var(--line);
-    display: flex;
-    gap: 16px;
-  }
-  .principles b { min-width: 2.2em; color: var(--muted); font-weight: 500; font-variant-numeric: tabular-nums; }
-
-  .contact { margin-top: 20px; font-size: 18px; }
-  a { color: var(--accent); text-underline-offset: 3px; }
-
-  footer {
-    padding: 32px 0;
-    font-size: 13px;
-    color: var(--muted);
-  }
+body{margin:0;background:#07080A}
+a{color:#C8FF4D}a:hover{color:#E2FF9E}
+summary{cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+@keyframes knexTicker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes knexPulse{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes knexScan{from{transform:translateX(-100%)}to{transform:translateX(400%)}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}
 </style>
+<style>html{scroll-behavior:smooth}</style>
 </head>
 <body>
-  <header>
-    <div class="wrap"><a class="logo" href="/">K<span>-</span>NEX</a></div>
+<div style="font-family: 'Space Grotesk', sans-serif; color: #F2F3F5; background: #07080A; line-height: 1.6">
+
+  <header style="border-bottom: 1px solid #1A1C21">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 0 24px; height: 72px; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between">
+      <a href="#top" style="text-decoration: none; color: #F2F3F5; font-weight: 700; font-size: 22px; letter-spacing: -0.02em">K-<span style="color: #C8FF4D">NEX</span></a>
+      <nav style="display: flex; flex-wrap: wrap; gap: 32px; font-size: 14px; align-items: center">
+        <a href="#meaning" style="color: #8B9099; text-decoration: none">Why NEX</a>
+        <a href="#how" style="color: #8B9099; text-decoration: none">Technology</a>
+        <a href="#product" style="color: #8B9099; text-decoration: none">Products</a>
+        <a href="#founder" style="color: #8B9099; text-decoration: none">Founder</a>
+        <a href="#contact" style="color: #07080A; background: #C8FF4D; padding: 10px 18px; border-radius: 999px; text-decoration: none; font-weight: 600">Early access</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <div class="wrap">
-      <h1>We do the hard part.<br>You press one button.</h1>
-      <p class="lead">K-NEX builds simple cloud tools that run right on your own PC, made for people who would rather not deal with IT.</p>
+  <section id="top" style="position: relative; overflow: hidden; border-bottom: 1px solid #1A1C21; background-color: #07080A; background-image: linear-gradient(#14161A 1px, transparent 1px), linear-gradient(90deg, #14161A 1px, transparent 1px); background-size: 64px 64px">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 120px 24px 104px; position: relative">
+      <p style="margin: 0 0 36px; display: inline-flex; gap: 10px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #8B9099; border: 1px solid #23262C; background: #0C0D10; padding: 8px 14px; border-radius: 999px">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: #C8FF4D; animation: knexPulse 1.8s ease-in-out infinite"></span>
+        NEX = NEXT · Next-generation IT, made simple
+      </p>
+      <h1 style="margin: 0 0 32px; font-size: 88px; line-height: 1.02; font-weight: 700; letter-spacing: -0.045em; max-width: 1000px">Next-generation tech.<br><span style="color: #C8FF4D">One click away.</span></h1>
+      <p style="margin: 0 0 44px; font-size: 20px; color: #A9ADB5; max-width: 620px">Powerful tools used to be locked behind expert-only screens. K-NEX turns them into simple apps anyone can use. We handle the complexity. You get the result.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center">
+        <a href="#contact" style="background: #C8FF4D; color: #07080A; padding: 16px 26px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 15px">Get early access</a>
+        <a href="#how" style="border: 1px solid #2C2F36; color: #F2F3F5; padding: 15px 26px; border-radius: 999px; text-decoration: none; font-weight: 500; font-size: 15px">See how it works</a>
+      </div>
 
-      <section>
-        <div class="label">Products</div>
-        <div class="item">
-          <h2>Dropbox Exit Helper</h2>
-          <span class="tag">Coming soon</span>
-          <p>Moves your files from Dropbox to Google Drive, exactly as they are. Install, sign in, done. Your files go straight from your PC, never through our servers.</p>
+      <div style="margin-top: 88px; background: #0E1013; border: 1px solid #23262C; border-radius: 18px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.6)">
+        <div style="height: 44px; display: flex; align-items: center; gap: 8px; padding: 0 16px; border-bottom: 1px solid #1A1C21">
+          <span style="width: 11px; height: 11px; border-radius: 50%; background: #2C2F36"></span>
+          <span style="width: 11px; height: 11px; border-radius: 50%; background: #2C2F36"></span>
+          <span style="width: 11px; height: 11px; border-radius: 50%; background: #2C2F36"></span>
+          <span style="flex: 1; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #6B7079; margin-right: 50px">k-nex · cloud migrator</span>
         </div>
-      </section>
-
-      <section>
-        <div class="label">Principles</div>
-        <ul class="principles">
-          <li><b>01</b><span>Your data moves only between your PC and your own cloud.</span></li>
-          <li><b>02</b><span>No settings screens. Just the one button you need.</span></li>
-          <li><b>03</b><span>Plain words, no jargon.</span></li>
-        </ul>
-      </section>
-
-      <section>
-        <div class="label">Contact</div>
-        <p class="contact"><a href="mailto:timkim@k-nex.com">timkim@k-nex.com</a></p>
-      </section>
+        <div style="display: flex; flex-wrap: wrap">
+          <div style="flex: 1 1 560px; min-width: 0; padding: 40px; display: flex; flex-direction: column; gap: 32px; border-right: 1px solid #1A1C21">
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+              <div style="flex: 1 1 170px; border: 1px solid #23262C; border-radius: 12px; padding: 18px 20px; background: #0A0B0D">
+                <p style="margin: 0 0 4px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6B7079">SOURCE</p>
+                <p style="margin: 0; font-weight: 600; font-size: 17px">Dropbox</p>
+                <p style="margin: 0; font-size: 13px; color: #8B9099">4,812 files · 38.2 GB</p>
+              </div>
+              <div style="flex: 0 1 120px; height: 2px; background: #23262C; position: relative; overflow: hidden; border-radius: 2px">
+                <div style="position: absolute; top: 0; left: 0; width: 30%; height: 2px; background: #C8FF4D; animation: knexScan 1.6s linear infinite"></div>
+              </div>
+              <div style="flex: 1 1 170px; border: 1px solid #C8FF4D; border-radius: 12px; padding: 18px 20px; background: #10140A">
+                <p style="margin: 0 0 4px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #A6C46A">DESTINATION</p>
+                <p style="margin: 0; font-weight: 600; font-size: 17px">Google Drive</p>
+                <p style="margin: 0; font-size: 13px; color: #8B9099">Storage OK</p>
+              </div>
+            </div>
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 12px"><span style="font-weight: 500">Moving your files</span><span style="font-family: 'JetBrains Mono', monospace; color: #A9ADB5">72% · ETA 14m</span></div>
+              <div style="height: 6px; background: #1A1C21; border-radius: 999px; overflow: hidden"><div style="width: 72%; height: 100%; background: #C8FF4D; border-radius: 999px"></div></div>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; font-family: 'JetBrains Mono', monospace">
+              <div style="border: 1px solid #1A1C21; border-radius: 10px; padding: 14px"><p style="margin: 0; font-size: 11px; color: #6B7079">VERIFIED</p><p style="margin: 2px 0 0; font-size: 18px">3,465</p></div>
+              <div style="border: 1px solid #1A1C21; border-radius: 10px; padding: 14px"><p style="margin: 0; font-size: 11px; color: #6B7079">SERVER</p><p style="margin: 2px 0 0; font-size: 18px; color: #C8FF4D">NONE</p></div>
+              <div style="border: 1px solid #1A1C21; border-radius: 10px; padding: 14px"><p style="margin: 0; font-size: 11px; color: #6B7079">ERRORS</p><p style="margin: 2px 0 0; font-size: 18px">0</p></div>
+            </div>
+          </div>
+          <div style="flex: 1 1 320px; min-width: 0; padding: 32px; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 2.1; color: #8B9099">
+            <p style="margin: 0 0 8px; font-size: 11px; color: #6B7079">LOG</p>
+            <div><span style="color: #C8FF4D">✓</span> Photos/2024 Trip — verified</div>
+            <div><span style="color: #C8FF4D">✓</span> Documents/Taxes — verified</div>
+            <div style="color: #F2F3F5"><span style="color: #C8FF4D; animation: knexPulse 1.2s ease-in-out infinite">●</span> Family Videos — copying</div>
+            <div style="color: #4A4E57">○ Work Files — queued</div>
+          </div>
+        </div>
+      </div>
+      <p style="margin: 14px 0 0; font-size: 12px; color: #6B7079; text-align: center">Product preview</p>
     </div>
-  </main>
+  </section>
 
-  <footer>
-    <div class="wrap">© <span id="y">2026</span> K-NEX</div>
+  <div style="border-bottom: 1px solid #1A1C21; overflow: hidden; padding: 22px 0" aria-hidden="true">
+    <div style="display: flex; width: max-content; gap: 56px; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #6B7079; animation: knexTicker 28s linear infinite; white-space: nowrap">
+      <span>LOCAL-FIRST</span><span style="color: #C8FF4D">◆</span><span>ZERO SERVER</span><span style="color: #C8FF4D">◆</span><span>ONE CLICK</span><span style="color: #C8FF4D">◆</span><span>VERIFIED TRANSFER</span><span style="color: #C8FF4D">◆</span><span>HUMAN SUPPORT</span><span style="color: #C8FF4D">◆</span>
+      <span>LOCAL-FIRST</span><span style="color: #C8FF4D">◆</span><span>ZERO SERVER</span><span style="color: #C8FF4D">◆</span><span>ONE CLICK</span><span style="color: #C8FF4D">◆</span><span>VERIFIED TRANSFER</span><span style="color: #C8FF4D">◆</span><span>HUMAN SUPPORT</span><span style="color: #C8FF4D">◆</span>
+    </div>
+  </div>
+
+  <section id="meaning" style="max-width: 1240px; margin: 0 auto; padding: 136px 24px; display: flex; flex-wrap: wrap; gap: 64px; align-items: center">
+    <div style="flex: 1 1 460px; min-width: 0">
+      <p style="margin: 0; font-size: 200px; line-height: 0.85; font-weight: 700; letter-spacing: -0.06em; color: #F2F3F5">NEX<span style="color: #C8FF4D">T</span></p>
+      <p style="margin: 20px 0 0; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #6B7079">K-NEX / NEX = NEXT GENERATION</p>
+    </div>
+    <div style="flex: 1 1 440px; min-width: 0">
+      <h2 style="margin: 0 0 20px; font-size: 44px; line-height: 1.15; font-weight: 700; letter-spacing: -0.035em">The technology is already next-gen.<br><span style="color: #8B9099">The experience is stuck in the past.</span></h2>
+      <p style="margin: 0; color: #A9ADB5; font-size: 18px">Automation, local processing, battle-tested open-source engines. These technologies are mature, yet they still hide behind command lines and settings menus. K-NEX brings them out and packages them so a first-time user can get it done on day one.</p>
+    </div>
+  </section>
+
+  <section id="how" style="border-top: 1px solid #1A1C21; border-bottom: 1px solid #1A1C21; background: #0A0B0D">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 128px 24px">
+      <p style="margin: 0 0 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #C8FF4D">/ ARCHITECTURE</p>
+      <h2 style="margin: 0 0 64px; font-size: 56px; line-height: 1.05; font-weight: 700; letter-spacing: -0.04em; max-width: 760px">Next-gen architecture.<br>No server in the middle.</h2>
+      <div style="display: flex; flex-wrap: wrap; align-items: stretch; border: 1px solid #23262C; border-radius: 18px; overflow: hidden">
+        <div style="flex: 1 1 240px; padding: 36px; border-right: 1px solid #23262C">
+          <p style="margin: 0 0 40px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #6B7079">01 · CLOUD</p>
+          <p style="margin: 0; font-size: 22px; font-weight: 600">Dropbox</p>
+        </div>
+        <div style="flex: 1.4 1 300px; padding: 36px; background: #C8FF4D; color: #07080A">
+          <p style="margin: 0 0 40px; font-family: 'JetBrains Mono', monospace; font-size: 12px">02 · YOUR PC</p>
+          <p style="margin: 0 0 6px; font-size: 22px; font-weight: 700">K-NEX Engine</p>
+          <p style="margin: 0; font-size: 15px">Everything runs on your own computer</p>
+        </div>
+        <div style="flex: 1 1 240px; padding: 36px; border-left: 1px solid #23262C">
+          <p style="margin: 0 0 40px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #6B7079">03 · CLOUD</p>
+          <p style="margin: 0; font-size: 22px; font-weight: 600">Google Drive</p>
+        </div>
+      </div>
+      <div style="margin-top: 64px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: #23262C; border: 1px solid #23262C; border-radius: 18px; overflow: hidden">
+        <div style="background: #0A0B0D; padding: 36px">
+          <p style="margin: 0 0 24px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #C8FF4D">LOCAL-FIRST</p>
+          <h3 style="margin: 0 0 10px; font-size: 22px; font-weight: 600; letter-spacing: -0.02em">Your files never leave your PC</h3>
+          <p style="margin: 0; color: #8B9099; font-size: 16px">Files move directly between your cloud accounts. Nothing passes through, or is stored on, K-NEX servers.</p>
+        </div>
+        <div style="background: #0A0B0D; padding: 36px">
+          <p style="margin: 0 0 24px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #C8FF4D">ZERO-CONFIG</p>
+          <h3 style="margin: 0 0 10px; font-size: 22px; font-weight: 600; letter-spacing: -0.02em">Zero settings. One button.</h3>
+          <p style="margin: 0; color: #8B9099; font-size: 16px">The engine makes the technical choices for you. All you see is progress and results.</p>
+        </div>
+        <div style="background: #0A0B0D; padding: 36px">
+          <p style="margin: 0 0 24px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #C8FF4D">VERIFIED</p>
+          <h3 style="margin: 0 0 10px; font-size: 22px; font-weight: 600; letter-spacing: -0.02em">Every file, double-checked</h3>
+          <p style="margin: 0; color: #8B9099; font-size: 16px">When the transfer finishes, every folder and file is compared against the original, so nothing gets left behind.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="product" style="max-width: 1240px; margin: 0 auto; padding: 136px 24px">
+    <p style="margin: 0 0 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #C8FF4D">/ PRODUCTS</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px">
+      <div style="grid-column: span 2; min-width: 0; border: 1px solid #2C2F36; border-radius: 22px; padding: 48px; display: flex; flex-direction: column; gap: 20px; min-height: 300px; background: #0E1013">
+        <span style="align-self: flex-start; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #07080A; background: #C8FF4D; padding: 4px 10px; border-radius: 999px">v1.0 · COMING SOON</span>
+        <h3 style="margin: 0; font-size: 44px; font-weight: 700; letter-spacing: -0.04em">Dropbox Exit Helper</h3>
+        <p style="margin: 0; color: #A9ADB5; font-size: 18px; max-width: 560px">Stop paying for a Dropbox plan you no longer need, without worrying about your files. Move everything to Google Drive, verify it, then cancel with confidence.</p>
+        <a href="#contact" style="margin-top: auto; align-self: flex-start; font-weight: 600; font-size: 15px">Get early access →</a>
+      </div>
+      <div style="min-width: 0; border: 1px dashed #2C2F36; border-radius: 22px; padding: 40px; display: flex; flex-direction: column; gap: 14px">
+        <span style="align-self: flex-start; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8B9099; border: 1px solid #2C2F36; padding: 3px 10px; border-radius: 999px">NEXT</span>
+        <h3 style="margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -0.03em">Your problem, solved next</h3>
+        <p style="margin: 0; color: #8B9099; font-size: 16px">Tell us the IT headache you keep running into. The most requested problems become our next products.</p>
+        <a href="mailto:timkim@k-nex.com" style="margin-top: auto; font-weight: 600; font-size: 15px">Send us your problem →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="founder" style="border-top: 1px solid #1A1C21; border-bottom: 1px solid #1A1C21">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 128px 24px; display: flex; flex-wrap: wrap; gap: 64px; align-items: flex-start">
+      <p style="flex: 2 1 580px; min-width: 0; margin: 0; font-size: 36px; line-height: 1.35; font-weight: 600; letter-spacing: -0.03em">“People aren’t falling behind technology. Technology just hasn’t reached people yet. K-NEX exists to close that last gap.”</p>
+      <div style="flex: 1 1 280px; min-width: 0; border-left: 2px solid #C8FF4D; padding-left: 28px; display: flex; flex-direction: column; gap: 18px">
+        <div>
+          <p style="margin: 0; font-weight: 700; font-size: 18px">Tim Kim</p>
+          <p style="margin: 4px 0 0; font-family: 'JetBrains Mono', monospace; color: #6B7079; font-size: 12px">FOUNDER · K-NEX</p>
+        </div>
+        <p style="margin: 0; color: #A9ADB5; font-size: 16px">Background in service quality analytics and process innovation at a global electronics company. Based in the UK.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" style="max-width: 1240px; margin: 0 auto; padding: 128px 24px; display: flex; flex-wrap: wrap; gap: 64px">
+    <h2 style="flex: 1 1 280px; min-width: 0; margin: 0; font-size: 44px; font-weight: 700; letter-spacing: -0.04em">FAQ</h2>
+    <div style="flex: 2 1 580px; min-width: 0; border-top: 1px solid #23262C">
+      <details style="border-bottom: 1px solid #23262C; padding: 24px 0"><summary style="display: flex; justify-content: space-between; gap: 16px; font-weight: 600; font-size: 18px">Can K-NEX see my files?<span aria-hidden="true" style="color: #C8FF4D">+</span></summary><p style="margin: 14px 0 0; color: #8B9099; font-size: 16px">No. The app runs only on your computer, and your files never pass through our servers.</p></details>
+      <details style="border-bottom: 1px solid #23262C; padding: 24px 0"><summary style="display: flex; justify-content: space-between; gap: 16px; font-weight: 600; font-size: 18px">Do I need to be good with computers?<span aria-hidden="true" style="color: #C8FF4D">+</span></summary><p style="margin: 14px 0 0; color: #8B9099; font-size: 16px">Not at all. Sign in to both accounts and click one button. If you get stuck, the person who built it will help you directly.</p></details>
+      <details style="border-bottom: 1px solid #23262C; padding: 24px 0"><summary style="display: flex; justify-content: space-between; gap: 16px; font-weight: 600; font-size: 18px">How much does it cost?<span aria-hidden="true" style="color: #C8FF4D">+</span></summary><p style="margin: 14px 0 0; color: #8B9099; font-size: 16px">Pricing will be announced at launch. Early-access members hear first.</p></details>
+    </div>
+  </section>
+
+  <section id="contact" style="max-width: 1240px; margin: 0 auto; padding: 0 24px 136px">
+    <div style="border: 1px solid #2C2F36; border-radius: 26px; padding: 72px 48px; background-color: #0C0D10; background-image: linear-gradient(#15171B 1px, transparent 1px), linear-gradient(90deg, #15171B 1px, transparent 1px); background-size: 48px 48px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center; justify-content: space-between">
+      <div style="flex: 1 1 440px; min-width: 0">
+        <h2 style="margin: 0 0 10px; font-size: 52px; line-height: 1.05; font-weight: 700; letter-spacing: -0.04em">Be first to what’s <span style="color: #C8FF4D">next</span>.</h2>
+        <p style="margin: 0; color: #8B9099; font-size: 17px">Join early access and we’ll let you know the moment we launch. No spam, ever.</p>
+      </div>
+      <div style="flex: 1 1 400px; min-width: 0; display: flex; flex-wrap: wrap; gap: 10px">
+        <a href="mailto:timkim@k-nex.com?subject=K-NEX%20early%20access" style="display: inline-flex; align-items: center; height: 54px; padding: 0 28px; border-radius: 999px; background: #C8FF4D; color: #07080A; font-size: 15px; font-weight: 700; text-decoration: none">Join early access</a>
+        <a href="mailto:timkim@k-nex.com" style="display: inline-flex; align-items: center; height: 54px; padding: 0 24px; border: 1px solid #2C2F36; border-radius: 999px; color: #F2F3F5; font-size: 15px; text-decoration: none; font-family: 'JetBrains Mono', monospace">timkim@k-nex.com</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="border-top: 1px solid #1A1C21">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 32px 24px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #6B7079">
+      <span>© 2026 K-NEX · NEXT-GENERATION IT, MADE SIMPLE</span>
+      <a href="mailto:timkim@k-nex.com" style="color: #8B9099">timkim@k-nex.com</a>
+    </div>
   </footer>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</div>
 </body>
 </html>
