@@ -224,7 +224,7 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
         <h2 style="margin: 0 0 10px; font-size: 52px; line-height: 1.05; font-weight: 700; letter-spacing: -0.04em">Be first to what’s <span style="color: #C8FF4D">next</span>.</h2>
         <p style="margin: 0; color: #8B9099; font-size: 17px">Join early access and we’ll let you know the moment we launch. No spam, ever.</p>
       </div>
-      <form data-kind="early-access" data-subject="K-NEX early access" novalidate style="flex: 1 1 400px; min-width: 0">
+      <form data-kind="early-access" novalidate style="flex: 1 1 400px; min-width: 0">
         <div style="display: flex; flex-wrap: wrap; gap: 10px">
           <label for="early-email" class="sr">Email address</label>
           <input id="early-email" class="knex-input" name="email" type="email" required autocomplete="email" placeholder="you@example.com" style="flex: 1 1 240px">
@@ -245,7 +245,7 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
         <p style="margin: 0 0 24px; color: #A9ADB5; font-size: 17px">Tell us what you’re stuck on. You’ll get a reply from the person who builds the product, not a ticket number.</p>
         <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #8B9099">Prefer email? <a href="mailto:tim.kim@k-nex.com">tim.kim@k-nex.com</a></p>
       </div>
-      <form data-kind="contact" data-subject="K-NEX contact" novalidate style="flex: 1.2 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+      <form data-kind="contact" novalidate style="flex: 1.2 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
         <div style="display: flex; flex-wrap: wrap; gap: 18px">
           <div style="flex: 1 1 200px; min-width: 0">
             <label class="knex-label" for="contact-name">NAME</label>
@@ -290,11 +290,8 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
   </footer>
 </div>
 <script>
-// Formspree form endpoint for early access (and the contact form until CONTACT_ENDPOINT is set).
-const FORM_ENDPOINT = "https://formspree.io/f/mrppaavp";
-// Google Apps Script web app for the contact form (apps-script/Code.gs), which accepts screenshots.
-// While empty, the contact form goes to Formspree without screenshots.
-const CONTACT_ENDPOINT = "https://script.google.com/macros/s/AKfycbxBll4z7N6UnZTaHdrv1axAH2No23ykzTjvPmWX57CXaaP3m_xE3NWouUgUg0dIaM3nPg/exec";
+// Google Apps Script web app (apps-script/Code.gs) that receives both forms.
+const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbxBll4z7N6UnZTaHdrv1axAH2No23ykzTjvPmWX57CXaaP3m_xE3NWouUgUg0dIaM3nPg/exec";
 const CONTACT_EMAIL = "tim.kim@k-nex.com";
 
 // Screenshot attachments for the contact form: paste, drop or browse; large images are shrunk before upload.
@@ -377,22 +374,17 @@ drop.addEventListener("dragover", (e) => { e.preventDefault(); drop.classList.ad
 drop.addEventListener("dragleave", () => drop.classList.remove("over"));
 drop.addEventListener("drop", (e) => { e.preventDefault(); drop.classList.remove("over"); addFiles(e.dataTransfer.files); });
 
-async function sendToScript(form) {
-  const files = await Promise.all(attachments.map(async (a) => ({ type: a.blob.type, data: await readBase64(a.blob) })));
-  const payload = { name: form.elements.name.value, email: form.elements.email.value, message: form.elements.message.value, files };
+async function send(form) {
+  const payload = { form: form.dataset.kind, email: form.elements.email.value };
+  if (form === contact) {
+    payload.name = form.elements.name.value;
+    payload.message = form.elements.message.value;
+    payload.files = await Promise.all(attachments.map(async (a) => ({ type: a.blob.type, data: await readBase64(a.blob) })));
+  }
   // A plain-text body keeps this a simple CORS request, which Apps Script accepts.
-  const res = await fetch(CONTACT_ENDPOINT, { method: "POST", body: JSON.stringify(payload) });
+  const res = await fetch(FORM_ENDPOINT, { method: "POST", body: JSON.stringify(payload) });
   const result = await res.json();
   if (!result.ok) throw new Error(result.error);
-}
-
-async function sendToFormspree(form) {
-  const data = new FormData(form);
-  data.delete("_gotcha");
-  data.append("form", form.dataset.kind);
-  data.append("_subject", form.dataset.subject);
-  const res = await fetch(FORM_ENDPOINT, { method: "POST", body: data, headers: { Accept: "application/json" } });
-  if (!res.ok) throw new Error(res.status);
 }
 
 document.querySelectorAll("form[data-kind]").forEach((form) => {
@@ -417,7 +409,7 @@ document.querySelectorAll("form[data-kind]").forEach((form) => {
     button.textContent = "Sending…";
     say("");
     try {
-      await (form === contact && CONTACT_ENDPOINT ? sendToScript(form) : sendToFormspree(form));
+      await send(form);
       form.reset();
       if (form === contact) clearAttachments();
       say(form.dataset.kind === "contact" ? "Thanks. Your message is in. We’ll reply by email." : "You’re on the list. We’ll email you at launch.", "ok");
