@@ -20,6 +20,19 @@ summary::-webkit-details-marker{display:none}
 @keyframes knexPulse{0%,100%{opacity:1}50%{opacity:.25}}
 @keyframes knexScan{from{transform:translateX(-100%)}to{transform:translateX(400%)}}
 @media (prefers-reduced-motion: reduce){*{animation:none!important}}
+.knex-input{box-sizing:border-box;height:54px;min-width:0;padding:0 22px;border:1px solid #2C2F36;border-radius:999px;background:#07080A;color:#F2F3F5;font:inherit;font-size:15px}
+textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius:18px;resize:vertical;line-height:1.5}
+.knex-input::placeholder{color:#4A4E57}
+.knex-input:focus{outline:none;border-color:#C8FF4D}
+.knex-input[aria-invalid="true"]{border-color:#FF6B5A}
+.knex-btn{height:54px;padding:0 28px;border:0;border-radius:999px;background:#C8FF4D;color:#07080A;font:inherit;font-size:15px;font-weight:700;cursor:pointer}
+.knex-btn:hover{background:#E2FF9E}
+.knex-btn:disabled{opacity:.6;cursor:wait}
+.knex-btn:focus-visible,.knex-input:focus-visible{outline:2px solid #C8FF4D;outline-offset:3px}
+.knex-status{margin:12px 0 0;min-height:1.6em;font-family:'JetBrains Mono',monospace;font-size:13px;color:#A9ADB5}
+.knex-status.ok{color:#C8FF4D}.knex-status.err{color:#FF6B5A}
+.knex-label{display:block;margin:0 0 8px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#6B7079}
+.sr,.hp{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 </style>
 <style>html{scroll-behavior:smooth}</style>
 </head>
@@ -169,7 +182,7 @@ summary::-webkit-details-marker{display:none}
         <span style="align-self: flex-start; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8B9099; border: 1px solid #2C2F36; padding: 3px 10px; border-radius: 999px">NEXT</span>
         <h3 style="margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -0.03em">Your problem, solved next</h3>
         <p style="margin: 0; color: #8B9099; font-size: 16px">Tell us the IT headache you keep running into. The most requested problems become our next products.</p>
-        <a href="mailto:timkim@k-nex.com" style="margin-top: auto; font-weight: 600; font-size: 15px">Send us your problem →</a>
+        <a href="#ask" style="margin-top: auto; font-weight: 600; font-size: 15px">Send us your problem →</a>
       </div>
     </div>
   </section>
@@ -202,19 +215,115 @@ summary::-webkit-details-marker{display:none}
         <h2 style="margin: 0 0 10px; font-size: 52px; line-height: 1.05; font-weight: 700; letter-spacing: -0.04em">Be first to what’s <span style="color: #C8FF4D">next</span>.</h2>
         <p style="margin: 0; color: #8B9099; font-size: 17px">Join early access and we’ll let you know the moment we launch. No spam, ever.</p>
       </div>
-      <div style="flex: 1 1 400px; min-width: 0; display: flex; flex-wrap: wrap; gap: 10px">
-        <a href="mailto:timkim@k-nex.com?subject=K-NEX%20early%20access" style="display: inline-flex; align-items: center; height: 54px; padding: 0 28px; border-radius: 999px; background: #C8FF4D; color: #07080A; font-size: 15px; font-weight: 700; text-decoration: none">Join early access</a>
-        <a href="mailto:timkim@k-nex.com" style="display: inline-flex; align-items: center; height: 54px; padding: 0 24px; border: 1px solid #2C2F36; border-radius: 999px; color: #F2F3F5; font-size: 15px; text-decoration: none; font-family: 'JetBrains Mono', monospace">timkim@k-nex.com</a>
+      <form data-kind="early-access" data-subject="K-NEX early access" novalidate style="flex: 1 1 400px; min-width: 0">
+        <div style="display: flex; flex-wrap: wrap; gap: 10px">
+          <label for="early-email" class="sr">Email address</label>
+          <input id="early-email" class="knex-input" name="email" type="email" required autocomplete="email" placeholder="you@example.com" style="flex: 1 1 240px">
+          <input class="hp" name="_gotcha" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="knex-btn" type="submit">Join early access</button>
+        </div>
+        <p class="knex-status" role="status" aria-live="polite"></p>
+        <p style="margin: 4px 0 0; font-size: 13px; color: #6B7079">We’ll only use your email to tell you when K-NEX launches. Unsubscribe any time. See our <a href="privacy.html">Privacy Policy</a>.</p>
+      </form>
+    </div>
+  </section>
+
+  <section id="ask" style="border-top: 1px solid #1A1C21">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 128px 24px; display: flex; flex-wrap: wrap; gap: 64px">
+      <div style="flex: 1 1 380px; min-width: 0">
+        <p style="margin: 0 0 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #C8FF4D">/ CONTACT</p>
+        <h2 style="margin: 0 0 20px; font-size: 44px; line-height: 1.1; font-weight: 700; letter-spacing: -0.04em">A question, or an IT headache?</h2>
+        <p style="margin: 0 0 24px; color: #A9ADB5; font-size: 17px">Tell us what you’re stuck on. You’ll get a reply from the person who builds the product, not a ticket number.</p>
+        <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #8B9099">Prefer email? <a href="mailto:tim.kim@k-nex.com">tim.kim@k-nex.com</a></p>
       </div>
+      <form data-kind="contact" data-subject="K-NEX contact" novalidate style="flex: 1.2 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+        <div style="display: flex; flex-wrap: wrap; gap: 18px">
+          <div style="flex: 1 1 200px; min-width: 0">
+            <label class="knex-label" for="contact-name">NAME</label>
+            <input id="contact-name" class="knex-input" name="name" type="text" autocomplete="name" style="width: 100%">
+          </div>
+          <div style="flex: 1 1 200px; min-width: 0">
+            <label class="knex-label" for="contact-email">EMAIL *</label>
+            <input id="contact-email" class="knex-input" name="email" type="email" required autocomplete="email" style="width: 100%">
+          </div>
+        </div>
+        <div>
+          <label class="knex-label" for="contact-message">MESSAGE *</label>
+          <textarea id="contact-message" class="knex-input" name="message" required maxlength="5000" style="width: 100%" placeholder="e.g. I want to cancel Dropbox but I'm scared of losing my photos."></textarea>
+        </div>
+        <input class="hp" name="_gotcha" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center">
+          <button class="knex-btn" type="submit">Send message</button>
+          <span style="font-size: 13px; color: #6B7079">See our <a href="privacy.html">Privacy Policy</a>.</span>
+        </div>
+        <p class="knex-status" role="status" aria-live="polite" style="margin: 0"></p>
+      </form>
     </div>
   </section>
 
   <footer style="border-top: 1px solid #1A1C21">
     <div style="max-width: 1240px; margin: 0 auto; padding: 32px 24px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #6B7079">
       <span>© 2026 K-NEX · NEXT-GENERATION IT, MADE SIMPLE</span>
-      <a href="mailto:timkim@k-nex.com" style="color: #8B9099">timkim@k-nex.com</a>
+      <span style="display: flex; flex-wrap: wrap; gap: 24px">
+        <a href="privacy.html" style="color: #8B9099">PRIVACY</a>
+        <a href="terms.html" style="color: #8B9099">TERMS</a>
+        <a href="mailto:tim.kim@k-nex.com" style="color: #8B9099">tim.kim@k-nex.com</a>
+      </span>
     </div>
   </footer>
 </div>
+<script>
+// Formspree form endpoint, e.g. "https://formspree.io/f/abcdwxyz".
+// While empty, forms fall back to opening the visitor's email app.
+const FORM_ENDPOINT = "https://formspree.io/f/mrppaavp";
+const CONTACT_EMAIL = "tim.kim@k-nex.com";
+
+document.querySelectorAll("form[data-kind]").forEach((form) => {
+  const status = form.querySelector(".knex-status");
+  const button = form.querySelector("button[type=submit]");
+  const label = button.textContent;
+  const say = (text, kind) => { status.textContent = text; status.className = "knex-status" + (kind ? " " + kind : ""); };
+
+  form.addEventListener("input", (e) => e.target.removeAttribute("aria-invalid"));
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const invalid = [...form.elements].filter((el) => el.willValidate && !el.checkValidity());
+    invalid.forEach((el) => el.setAttribute("aria-invalid", "true"));
+    if (invalid.length) {
+      say(invalid[0].type === "email" ? "Please enter a valid email address." : "Please fill in the required fields.", "err");
+      invalid[0].focus();
+      return;
+    }
+    if (form.elements._gotcha.value) return;
+
+    const data = new FormData(form);
+    data.delete("_gotcha");
+    data.append("form", form.dataset.kind);
+    data.append("_subject", form.dataset.subject);
+
+    if (!FORM_ENDPOINT) {
+      const body = [...data].filter(([k]) => !k.startsWith("_")).map(([k, v]) => `${k}: ${v}`).join("\n");
+      location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(form.dataset.subject)}&body=${encodeURIComponent(body)}`;
+      say("Your email app should open with this filled in. Just press send.");
+      return;
+    }
+
+    button.disabled = true;
+    button.textContent = "Sending…";
+    say("");
+    try {
+      const res = await fetch(FORM_ENDPOINT, { method: "POST", body: data, headers: { Accept: "application/json" } });
+      if (!res.ok) throw new Error(res.status);
+      form.reset();
+      say(form.dataset.kind === "contact" ? "Thanks. Your message is in. We’ll reply by email." : "You’re on the list. We’ll email you at launch.", "ok");
+    } catch {
+      say(`Something went wrong. Please email ${CONTACT_EMAIL} instead.`, "err");
+    } finally {
+      button.disabled = false;
+      button.textContent = label;
+    }
+  });
+});
+</script>
 </body>
 </html>
