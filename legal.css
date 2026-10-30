@@ -10,6 +10,8 @@ main{max-width:760px;margin:0 auto;padding:96px 24px 128px}
 h1{margin:0 0 12px;font-size:56px;line-height:1.05;font-weight:700;letter-spacing:-0.04em}
 .meta{margin:0 0 56px;font-family:'JetBrains Mono',monospace;font-size:13px;color:#6B7079}
 h2{margin:56px 0 14px;font-size:24px;font-weight:600;letter-spacing:-0.02em}
+h3{margin:32px 0 10px;font-size:18px;font-weight:600;letter-spacing:-0.01em}
+code{font-family:'JetBrains Mono',monospace;font-size:0.9em}
 p,li{color:#A9ADB5;font-size:16px}
 ul{padding-left:20px}
 li{margin:6px 0}

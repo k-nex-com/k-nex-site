@@ -17,10 +17,10 @@
   <h1>Privacy Policy</h1>
   <p class="meta">LAST UPDATED · 30 OCTOBER 2026</p>
 
-  <p>This policy explains what personal data K-NEX collects through this website, why, and what rights you have. We keep it short because we collect very little.</p>
+  <p>This policy explains what personal data K-NEX collects through this website and through our desktop app <a href="#nexmove">NexMove</a>, why, and what rights you have. We keep it short because we collect very little.</p>
 
   <h2>Who we are</h2>
-  <p>K-NEX is run by Tim Kim in the United Kingdom. Tim Kim is the data controller for personal data collected through k-nex.com. You can reach us at <a href="mailto:tim.kim@k-nex.com">tim.kim@k-nex.com</a>.</p>
+  <p>K-NEX is run by Tim Kim in the United Kingdom. Tim Kim is the data controller for personal data collected through k-nex.com and through our apps. You can reach us at <a href="mailto:tim.kim@k-nex.com">tim.kim@k-nex.com</a>.</p>
 
   <h2>What we collect</h2>
   <table>
@@ -28,6 +28,7 @@
     <tbody>
       <tr><td data-label="When">You join early access</td><td data-label="What">Your email address</td><td data-label="Why">To tell you when our products launch</td><td data-label="Legal basis">Your consent</td></tr>
       <tr><td data-label="When">You send a message</td><td data-label="What">Your name (optional), email address, message and any screenshots you attach</td><td data-label="Why">To reply to you</td><td data-label="Legal basis">Our legitimate interest in answering enquiries</td></tr>
+      <tr><td data-label="When">You press “Send report” or “Get help” in NexMove</td><td data-label="What">The report you see before sending: app and Windows version, the step that went wrong, the error message, recent app log lines (which can include file and folder names unless you choose to hide them), and your email address and message if you add them</td><td data-label="Why">To find and fix the problem and, if you gave your email, to reply</td><td data-label="Legal basis">Our legitimate interest in supporting our product</td></tr>
       <tr><td data-label="When">You visit the site</td><td data-label="What">Technical data such as your IP address and browser type, logged by our hosting and font providers</td><td data-label="Why">To deliver and secure the website</td><td data-label="Legal basis">Our legitimate interest in running the site</td></tr>
     </tbody>
   </table>
@@ -35,7 +36,7 @@
 
   <h2>Who processes your data for us</h2>
   <ul>
-    <li><strong>Google</strong> (Google LLC: Apps Script, Drive and Sheets) receives the forms on this site, stores any screenshots you attach and keeps our list of sign-ups and messages.</li>
+    <li><strong>Google</strong> (Google LLC: Apps Script, Drive and Sheets) receives the forms on this site and the reports you send from NexMove, stores any screenshots and reports, and keeps our list of sign-ups and messages.</li>
     <li><strong>GitHub Pages</strong> (GitHub, Inc.) hosts this website.</li>
     <li><strong>Google Fonts</strong> (Google LLC) serves the typefaces this site uses.</li>
     <li>Our <strong>email provider</strong> stores the messages we receive and send.</li>
@@ -46,6 +47,7 @@
   <ul>
     <li><strong>Early access emails:</strong> until you unsubscribe, or 12 months after the product you signed up for launches, whichever comes first.</li>
     <li><strong>Messages and screenshots:</strong> up to 24 months after our last exchange, then deleted.</li>
+    <li><strong>NexMove reports and help requests:</strong> up to 24 months after we receive them or after our last exchange about them, then deleted.</li>
   </ul>
 
   <h2>Your rights</h2>
@@ -60,8 +62,32 @@
   <p>Where we rely on your consent, you can withdraw it at any time by emailing us or using the unsubscribe link in any email we send. To exercise any of these rights, email <a href="mailto:tim.kim@k-nex.com">tim.kim@k-nex.com</a>. We will reply within one month.</p>
   <p>If you are unhappy with how we handle your data, you can complain to the Information Commissioner’s Office at <a href="https://ico.org.uk/make-a-complaint/">ico.org.uk</a>. We would appreciate the chance to resolve it with you first.</p>
 
-  <h2>Our products</h2>
-  <p>Our apps are designed to run on your own computer. Files you move with them go directly between your cloud accounts and do not pass through K-NEX servers. Each product will come with its own privacy notice at launch.</p>
+  <h2 id="nexmove">NexMove (desktop app)</h2>
+  <p>NexMove copies your files from Dropbox to Google Drive. It runs entirely on your own Windows computer. Your files travel from Dropbox to your computer and on to Google Drive; they never pass through, and are never stored on, K-NEX servers.</p>
+
+  <h3>Signing in to Dropbox and Google</h3>
+  <p>You sign in on Dropbox’s and Google’s own web pages. K-NEX never sees your passwords. After you sign in, Dropbox and Google give NexMove an access token, which is saved only on your computer, in NexMove’s settings folder. It is never sent to K-NEX.</p>
+  <ul>
+    <li><strong>Dropbox:</strong> NexMove reads your files and folders so it can copy them. It does not change, move or delete anything in your Dropbox.</li>
+    <li><strong>Google Drive:</strong> NexMove asks only for access to files it creates itself (the <code>drive.file</code> permission). It creates a folder called “From Dropbox”, copies your files into it and checks them afterwards. It cannot see or change any other files in your Google Drive.</li>
+  </ul>
+
+  <h3>What stays on your computer</h3>
+  <p>NexMove keeps a log of what it copied and any errors, and remembers which folders you chose, so it can carry on where it stopped. These stay on your computer. NexMove has no analytics or tracking and does not send usage data to K-NEX.</p>
+
+  <h3>When something is sent to K-NEX</h3>
+  <p>Only when you press “Send report” or “Get help”. Before anything is sent, NexMove shows you exactly what will be sent. Sign-in tokens are always removed, you can choose to hide file and folder names, and the contents of your files are never sent. See the table above for what a report contains and how long we keep it.</p>
+
+  <h3>Google user data</h3>
+  <p>NexMove’s use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements. NexMove uses Google Drive access only to copy your files into your own Google Drive and to check that they arrived. That data stays on your computer and in your Google Drive. It is not transferred to K-NEX or anyone else, not used for advertising, and not read by people.</p>
+
+  <h3>Removing NexMove’s access</h3>
+  <p>Uninstalling NexMove deletes the app, but you can also remove its access at any time:</p>
+  <ul>
+    <li>Google: <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a></li>
+    <li>Dropbox: <a href="https://www.dropbox.com/account/connected_apps">dropbox.com/account/connected_apps</a></li>
+  </ul>
+  <p>Files NexMove copied stay in your Google Drive until you delete them.</p>
 
   <h2>Changes to this policy</h2>
   <p>If we change this policy, we will update the date at the top of this page. If the change is significant, we will tell early-access members by email.</p>
