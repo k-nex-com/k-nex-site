@@ -32,6 +32,15 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
 .knex-status{margin:12px 0 0;min-height:1.6em;font-family:'JetBrains Mono',monospace;font-size:13px;color:#A9ADB5}
 .knex-status.ok{color:#C8FF4D}.knex-status.err{color:#FF6B5A}
 .knex-label{display:block;margin:0 0 8px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#6B7079}
+.knex-drop{display:flex;align-items:center;justify-content:center;min-height:72px;padding:16px 22px;border:1px dashed #2C2F36;border-radius:18px;color:#8B9099;font-size:14px;text-align:center;cursor:pointer}
+.knex-drop:hover,.knex-drop.over{border-color:#C8FF4D;color:#F2F3F5}
+.knex-drop:focus-within{outline:2px solid #C8FF4D;outline-offset:3px}
+.knex-drop kbd{font-family:'JetBrains Mono',monospace;font-size:12px;padding:1px 6px;border:1px solid #2C2F36;border-radius:6px}
+.knex-thumbs{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.knex-thumbs:empty{display:none}
+.knex-thumbs li{position:relative;width:96px;height:72px;border:1px solid #2C2F36;border-radius:10px;overflow:hidden;background:#0E1013}
+.knex-thumbs img{display:block;width:100%;height:100%;object-fit:cover}
+.knex-thumbs button{position:absolute;top:4px;right:4px;width:24px;height:24px;padding:0;border:0;border-radius:50%;background:rgba(7,8,10,.85);color:#F2F3F5;font-size:14px;line-height:24px;cursor:pointer}
 .sr,.hp{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 </style>
 <style>html{scroll-behavior:smooth}</style>
@@ -251,6 +260,14 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
           <label class="knex-label" for="contact-message">MESSAGE *</label>
           <textarea id="contact-message" class="knex-input" name="message" required maxlength="5000" style="width: 100%" placeholder="e.g. I want to cancel Dropbox but I'm scared of losing my photos."></textarea>
         </div>
+        <div>
+          <span class="knex-label">SCREENSHOTS <span style="color: #4A4E57">· OPTIONAL, UP TO 5</span></span>
+          <label class="knex-drop" for="contact-files">
+            <input id="contact-files" class="sr" type="file" accept="image/png,image/jpeg,image/webp,image/gif" multiple>
+            <span>Paste with <kbd>Ctrl</kbd> + <kbd>V</kbd>, drop images here, or <u>browse</u></span>
+          </label>
+          <ul class="knex-thumbs" aria-label="Attached screenshots"></ul>
+        </div>
         <input class="hp" name="_gotcha" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center">
           <button class="knex-btn" type="submit">Send message</button>
@@ -273,10 +290,110 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
   </footer>
 </div>
 <script>
-// Formspree form endpoint, e.g. "https://formspree.io/f/abcdwxyz".
-// While empty, forms fall back to opening the visitor's email app.
+// Formspree form endpoint for early access (and the contact form until CONTACT_ENDPOINT is set).
 const FORM_ENDPOINT = "https://formspree.io/f/mrppaavp";
+// Google Apps Script web app for the contact form (apps-script/Code.gs), which accepts screenshots.
+// While empty, the contact form goes to Formspree without screenshots.
+const CONTACT_ENDPOINT = "https://script.google.com/macros/s/AKfycbxBll4z7N6UnZTaHdrv1axAH2No23ykzTjvPmWX57CXaaP3m_xE3NWouUgUg0dIaM3nPg/exec";
 const CONTACT_EMAIL = "tim.kim@k-nex.com";
+
+// Screenshot attachments for the contact form: paste, drop or browse; large images are shrunk before upload.
+const MAX_FILES = 5;
+const KEEP_BYTES = 1.5 * 1024 * 1024;
+const MAX_SIDE = 2000;
+const contact = document.querySelector("form[data-kind=contact]");
+const drop = contact.querySelector(".knex-drop");
+const picker = contact.querySelector("#contact-files");
+const thumbs = contact.querySelector(".knex-thumbs");
+const attachments = [];
+
+const readBase64 = (blob) => new Promise((resolve, reject) => {
+  const reader = new FileReader();
+  reader.onload = () => resolve(reader.result.split(",")[1]);
+  reader.onerror = reject;
+  reader.readAsDataURL(blob);
+});
+
+async function shrink(file) {
+  if (file.size <= KEEP_BYTES) return file;
+  const bitmap = await createImageBitmap(file);
+  const scale = Math.min(1, MAX_SIDE / Math.max(bitmap.width, bitmap.height));
+  const canvas = document.createElement("canvas");
+  canvas.width = Math.round(bitmap.width * scale);
+  canvas.height = Math.round(bitmap.height * scale);
+  canvas.getContext("2d").drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+  return new Promise((resolve) => canvas.toBlob(resolve, "image/jpeg", 0.85));
+}
+
+function renderThumbs() {
+  thumbs.replaceChildren(...attachments.map((a, i) => {
+    const li = document.createElement("li");
+    const img = document.createElement("img");
+    img.src = a.url;
+    img.alt = `Screenshot ${i + 1}`;
+    const remove = document.createElement("button");
+    remove.type = "button";
+    remove.textContent = "×";
+    remove.setAttribute("aria-label", `Remove screenshot ${i + 1}`);
+    remove.addEventListener("click", () => {
+      URL.revokeObjectURL(a.url);
+      attachments.splice(i, 1);
+      renderThumbs();
+    });
+    li.append(img, remove);
+    return li;
+  }));
+}
+
+async function addFiles(files) {
+  const status = contact.querySelector(".knex-status");
+  const images = [...files].filter((f) => /^image\/(png|jpeg|webp|gif)$/.test(f.type));
+  const room = MAX_FILES - attachments.length;
+  status.textContent = images.length > room ? `You can attach up to ${MAX_FILES} screenshots.` : "";
+  status.className = "knex-status" + (status.textContent ? " err" : "");
+  for (const file of images.slice(0, Math.max(room, 0))) {
+    try {
+      const blob = await shrink(file);
+      attachments.push({ blob, url: URL.createObjectURL(blob) });
+    } catch {
+      status.textContent = "One of the images couldn’t be read. Try a PNG or JPG.";
+      status.className = "knex-status err";
+    }
+  }
+  renderThumbs();
+}
+
+function clearAttachments() {
+  attachments.forEach((a) => URL.revokeObjectURL(a.url));
+  attachments.length = 0;
+  renderThumbs();
+}
+
+picker.addEventListener("change", () => { addFiles(picker.files); picker.value = ""; });
+contact.addEventListener("paste", (e) => {
+  if (e.clipboardData.files.length) { e.preventDefault(); addFiles(e.clipboardData.files); }
+});
+drop.addEventListener("dragover", (e) => { e.preventDefault(); drop.classList.add("over"); });
+drop.addEventListener("dragleave", () => drop.classList.remove("over"));
+drop.addEventListener("drop", (e) => { e.preventDefault(); drop.classList.remove("over"); addFiles(e.dataTransfer.files); });
+
+async function sendToScript(form) {
+  const files = await Promise.all(attachments.map(async (a) => ({ type: a.blob.type, data: await readBase64(a.blob) })));
+  const payload = { name: form.elements.name.value, email: form.elements.email.value, message: form.elements.message.value, files };
+  // A plain-text body keeps this a simple CORS request, which Apps Script accepts.
+  const res = await fetch(CONTACT_ENDPOINT, { method: "POST", body: JSON.stringify(payload) });
+  const result = await res.json();
+  if (!result.ok) throw new Error(result.error);
+}
+
+async function sendToFormspree(form) {
+  const data = new FormData(form);
+  data.delete("_gotcha");
+  data.append("form", form.dataset.kind);
+  data.append("_subject", form.dataset.subject);
+  const res = await fetch(FORM_ENDPOINT, { method: "POST", body: data, headers: { Accept: "application/json" } });
+  if (!res.ok) throw new Error(res.status);
+}
 
 document.querySelectorAll("form[data-kind]").forEach((form) => {
   const status = form.querySelector(".knex-status");
@@ -296,25 +413,13 @@ document.querySelectorAll("form[data-kind]").forEach((form) => {
     }
     if (form.elements._gotcha.value) return;
 
-    const data = new FormData(form);
-    data.delete("_gotcha");
-    data.append("form", form.dataset.kind);
-    data.append("_subject", form.dataset.subject);
-
-    if (!FORM_ENDPOINT) {
-      const body = [...data].filter(([k]) => !k.startsWith("_")).map(([k, v]) => `${k}: ${v}`).join("\n");
-      location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(form.dataset.subject)}&body=${encodeURIComponent(body)}`;
-      say("Your email app should open with this filled in. Just press send.");
-      return;
-    }
-
     button.disabled = true;
     button.textContent = "Sending…";
     say("");
     try {
-      const res = await fetch(FORM_ENDPOINT, { method: "POST", body: data, headers: { Accept: "application/json" } });
-      if (!res.ok) throw new Error(res.status);
+      await (form === contact && CONTACT_ENDPOINT ? sendToScript(form) : sendToFormspree(form));
       form.reset();
+      if (form === contact) clearAttachments();
       say(form.dataset.kind === "contact" ? "Thanks. Your message is in. We’ll reply by email." : "You’re on the list. We’ll email you at launch.", "ok");
     } catch {
       say(`Something went wrong. Please email ${CONTACT_EMAIL} instead.`, "err");
