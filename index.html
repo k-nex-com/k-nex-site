@@ -10,12 +10,14 @@
 <meta property="og:url" content="https://k-nex.com/">
 <link rel="canonical" href="https://k-nex.com/">
 <meta name="theme-color" content="#F7F4EC">
+<meta name="color-scheme" content="only light">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <style>
+:root{color-scheme:only light}
 body{margin:0;background:#F7F4EC}
 a{color:#1F47B8}a:hover{color:#163A99}
 summary{cursor:pointer;list-style:none}
@@ -34,6 +36,8 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
 #contact .knex-status{color:#F7F4EC}#contact .knex-status.err{color:#FFD5CF}#contact .knex-status.ok{color:#C7F2E2}
 #contact a{color:#F7F4EC}
 .knex-btn:disabled{opacity:.6;cursor:wait}
+.hero-bg{position:absolute;top:120px;right:max(0px,calc(50% - 650px));width:min(560px,46%);height:auto;opacity:.75;pointer-events:none}
+@media (max-width:720px){.hero-bg{top:330px;right:-8%;width:116%;opacity:.45}}
 .knex-btn:focus-visible,.knex-input:focus-visible{outline:2px solid #1F47B8;outline-offset:3px}
 .knex-status{margin:12px 0 0;min-height:1.6em;font-family:'JetBrains Mono',monospace;font-size:13px;color:#4A5263}
 .knex-status.ok{color:#1F47B8}.knex-status.err{color:#C93A2C}
@@ -68,21 +72,17 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
   </header>
 
   <section id="top" style="position: relative; overflow: hidden; border-bottom: 1px solid #E7E2D6; background-color: #F7F4EC; background-image: linear-gradient(#ECE7DC 1px, transparent 1px), linear-gradient(90deg, #ECE7DC 1px, transparent 1px); background-size: 64px 64px">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 88px 24px 104px; position: relative">
-      <div style="display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
-      <div style="flex: 1 1 560px; min-width: 0">
+    <img class="hero-bg" src="img/hero-bg.svg" width="520" height="500" alt="" aria-hidden="true">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 120px 24px 104px; position: relative">
       <p style="margin: 0 0 36px; display: inline-flex; gap: 10px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5A6275; border: 1px solid #E2DCCF; background: #FFFFFF; padding: 8px 14px; border-radius: 999px">
         <span style="width: 8px; height: 8px; border-radius: 50%; background: #D2392A; animation: knexPulse 1.8s ease-in-out infinite"></span>
         NEX = NEXT · Next-generation IT, made simple
       </p>
-      <h1 style="margin: 0 0 32px; font-size: clamp(44px, 9vw, 76px); line-height: 1.02; font-weight: 700; letter-spacing: -0.045em; max-width: 1000px">Next-generation tech.<br><span style="color: #1F47B8">One click away.</span></h1>
+      <h1 style="margin: 0 0 32px; font-size: clamp(44px, 11vw, 88px); line-height: 1.02; font-weight: 700; letter-spacing: -0.045em; max-width: 1000px">Next-generation tech.<br><span style="color: #1F47B8">One click away.</span></h1>
       <p style="margin: 0 0 44px; font-size: 20px; color: #4A5263; max-width: 620px">Powerful tools used to be locked behind expert-only screens. K-NEX turns them into simple apps anyone can use. We handle the complexity. You get the result.</p>
       <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center">
         <a href="#contact" style="background: #D2392A; color: #FFFFFF; padding: 16px 26px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 15px">Get early access</a>
         <a href="#how" style="border: 1px solid #D6D0C2; color: #0F1A33; padding: 15px 26px; border-radius: 999px; text-decoration: none; font-weight: 500; font-size: 15px">See how it works</a>
-      </div>
-      </div>
-      <img src="img/hero-irworo-soft.svg" width="480" height="500" alt="K-NEX guide tiger with a magpie, in front of the sun, moon and five peaks" style="flex: 0 1 400px; width: 100%; max-width: 400px; height: auto; margin: 0 auto; display: block">
       </div>
 
       <div style="margin-top: 88px; background: #FFFFFF; border: 1px solid #E2DCCF; border-radius: 18px; overflow: hidden; box-shadow: 0 24px 60px rgba(15,26,51,0.12)">

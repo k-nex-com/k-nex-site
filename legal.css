@@ -1,4 +1,5 @@
 body{margin:0;background:#F7F4EC;color:#0F1A33;font-family:'Space Grotesk',sans-serif;line-height:1.7}
+:root{color-scheme:only light}
 a{color:#1F47B8}a:hover{color:#163A99}
 header{border-bottom:1px solid #E7E2D6}
 .bar{max-width:1240px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}
