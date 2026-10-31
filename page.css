@@ -13,8 +13,8 @@ summary::-webkit-details-marker{display:none}
 
 header{border-bottom:1px solid #1A1C21}
 .bar{height:72px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
-.logo{text-decoration:none;color:#F2F3F5;font-weight:700;font-size:22px;letter-spacing:-0.02em}
-.logo span{color:#C8FF4D}
+.logo{display:inline-flex;align-items:center;color:#F2F3F5;text-decoration:none}
+.logo svg{display:block}
 .nav{display:flex;flex-wrap:wrap;gap:28px;font-size:14px;align-items:center}
 .nav a{color:#8B9099;text-decoration:none}
 .nav a:hover{color:#F2F3F5}

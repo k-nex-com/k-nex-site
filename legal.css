@@ -2,8 +2,8 @@ body{margin:0;background:#07080A;color:#F2F3F5;font-family:'Space Grotesk',sans-
 a{color:#C8FF4D}a:hover{color:#E2FF9E}
 header{border-bottom:1px solid #1A1C21}
 .bar{max-width:1240px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.logo{text-decoration:none;color:#F2F3F5;font-weight:700;font-size:22px;letter-spacing:-0.02em}
-.logo span{color:#C8FF4D}
+.logo{display:inline-flex;align-items:center;color:#F2F3F5;text-decoration:none}
+.logo svg{display:block}
 .back{color:#8B9099;text-decoration:none;font-size:14px}
 main{max-width:760px;margin:0 auto;padding:96px 24px 128px}
 .kicker{margin:0 0 16px;font-family:'JetBrains Mono',monospace;font-size:13px;color:#C8FF4D}
