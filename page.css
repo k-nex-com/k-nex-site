@@ -37,6 +37,9 @@ header{border-bottom:1px solid #E7E2D6}
 .btn.ghost:hover{border-color:#1F47B8}
 .facts{margin:56px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:12px 32px;font-family:'JetBrains Mono',monospace;font-size:13px;color:#5A6275}
 .facts li::before{content:"✓ ";color:#1E9E7A}
+.routes{margin:-16px 0 40px;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:10px;font-family:'JetBrains Mono',monospace;font-size:13px}
+.routes li{border:1px solid #D6D0C2;background:#FFFFFF;border-radius:999px;padding:6px 14px}
+.routes b{color:#1F47B8;font-weight:500}
 
 section.block{padding:120px 0;border-bottom:1px solid #E7E2D6}
 section.alt{background:#FFFFFF}
@@ -75,6 +78,8 @@ h3{margin:0 0 10px;font-size:22px;font-weight:600;letter-spacing:-0.02em}
 .faq summary::after{content:"+";color:#1F47B8}
 .faq details[open] summary::after{content:"−"}
 .faq p{margin:14px 0 0;color:#5A6275;font-size:16px;max-width:760px}
+.faq ul{margin:8px 0 0;padding-left:1.2em;color:#5A6275;font-size:16px;max-width:760px}
+.faq strong{color:#0F1A33}
 .split{display:flex;flex-wrap:wrap;gap:64px}
 .split>:first-child{flex:1 1 280px;min-width:0}
 .split>:last-child{flex:2 1 580px;min-width:0}

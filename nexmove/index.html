@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NexMove — Move Dropbox to Google Drive, then cancel with confidence</title>
-<meta name="description" content="NexMove by K-NEX copies all your files from Dropbox to Google Drive on your own Windows PC with no servers in between and no disk space needed, checks every file, and tells you when it is safe to cancel Dropbox. One-time price, no subscription.">
+<title>NexMove — Move Dropbox or OneDrive to Google Drive or OneDrive</title>
+<meta name="description" content="NexMove by K-NEX copies all your files from Dropbox to Google Drive, Dropbox to OneDrive, or OneDrive to Google Drive on your own Windows PC, with no servers in between and no disk space needed. It checks every file and tells you when it is safe to cancel. One-time price, no subscription.">
 <link rel="canonical" href="https://k-nex.com/nexmove/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="NexMove — Move Dropbox to Google Drive, then cancel with confidence">
-<meta property="og:description" content="Copy everything from Dropbox to Google Drive, verify every file, then cancel Dropbox without worrying.">
+<meta property="og:title" content="NexMove — Move Dropbox or OneDrive, then cancel with confidence">
+<meta property="og:description" content="Dropbox to Google Drive, Dropbox to OneDrive, or OneDrive to Google Drive. Copy everything, verify every file, then cancel without worrying.">
 <meta property="og:url" content="https://k-nex.com/nexmove/">
 <meta name="theme-color" content="#F7F4EC">
 <meta name="color-scheme" content="only light">
@@ -25,7 +25,8 @@
   "name": "NexMove",
   "alternateName": "NexMove by K-NEX",
   "url": "https://k-nex.com/nexmove/",
-  "description": "A Windows desktop app that copies your files from Dropbox to Google Drive on your own computer, verifies every file, and helps you cancel Dropbox safely.",
+  "description": "A Windows desktop app that copies your files from Dropbox to Google Drive, Dropbox to OneDrive, or OneDrive to Google Drive on your own computer, verifies every file, and helps you cancel the old plan safely.",
+  "featureList": ["Dropbox to Google Drive", "Dropbox to OneDrive", "OneDrive to Google Drive", "Every file verified", "No servers in between", "No disk space needed", "Resumes where it stopped"],
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Windows",
   "publisher": { "@type": "Organization", "name": "K-NEX", "url": "https://k-nex.com/" },
@@ -37,11 +38,12 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "Does NexMove delete anything from my Dropbox?", "acceptedAnswer": { "@type": "Answer", "text": "No. NexMove only reads your Dropbox. It never changes, moves or deletes your Dropbox files. You decide when to cancel." } },
-    { "@type": "Question", "name": "Can K-NEX see my files?", "acceptedAnswer": { "@type": "Answer", "text": "No. NexMove runs on your own Windows PC. Your files go from your Dropbox, through your PC, to your Google Drive. There are no servers in between, not ours and not anyone else's." } },
-    { "@type": "Question", "name": "Do I need free space on my computer?", "acceptedAnswer": { "@type": "Answer", "text": "No. Unlike copying between the Dropbox and Google Drive desktop apps, NexMove never saves your files to your hard drive. You only need room to install the app." } },
-    { "@type": "Question", "name": "What can NexMove see in my Google Drive?", "acceptedAnswer": { "@type": "Answer", "text": "Only the files it creates. NexMove asks Google for the drive.file permission, copies everything into a folder called From Dropbox, and cannot see or change any of your other Google Drive files." } },
-    { "@type": "Question", "name": "What if my internet drops halfway?", "acceptedAnswer": { "@type": "Answer", "text": "Open NexMove again and press Start. It checks what is already in Google Drive and copies only the files that are still missing. Files already copied are not copied again." } },
+    { "@type": "Question", "name": "Which moves does NexMove do, and which not?", "acceptedAnswer": { "@type": "Answer", "text": "Three, in one app: Dropbox to Google Drive, Dropbox to OneDrive, and OneDrive to Google Drive. It does not move files out of Google Drive, into Dropbox, or between two accounts of the same service. It does not support work or school OneDrive (OneDrive for Business) or SharePoint, files in OneDrive Personal Vault, or other services such as iCloud Drive, Box or Mega." } },
+    { "@type": "Question", "name": "Does NexMove delete anything where my files are now?", "acceptedAnswer": { "@type": "Answer", "text": "No. NexMove only copies from your Dropbox or OneDrive. It never changes, moves or deletes anything there. You decide when to cancel." } },
+    { "@type": "Question", "name": "Can K-NEX see my files?", "acceptedAnswer": { "@type": "Answer", "text": "No. NexMove runs on your own Windows PC. Your files go from your Dropbox or OneDrive, through your PC, to your Google Drive or OneDrive. There are no servers in between, not ours and not anyone else's." } },
+    { "@type": "Question", "name": "Do I need free space on my computer?", "acceptedAnswer": { "@type": "Answer", "text": "No. Unlike copying between two cloud desktop apps, NexMove never saves your files to your hard drive. You only need room to install the app." } },
+    { "@type": "Question", "name": "What can NexMove see where my files go?", "acceptedAnswer": { "@type": "Answer", "text": "In Google Drive, only the files it creates: NexMove asks Google for the drive.file permission and cannot see or change your other Google Drive files. OneDrive has no permission that narrow, so NexMove asks for access to your OneDrive files, but it only adds its own folder and does not change or delete anything else. Your files go into a new folder called From Dropbox or From OneDrive." } },
+    { "@type": "Question", "name": "What if my internet drops halfway?", "acceptedAnswer": { "@type": "Answer", "text": "Open NexMove again and press Start. It checks what has already arrived and copies only the files that are still missing. Files already copied are not copied again." } },
     { "@type": "Question", "name": "Do I need to keep my computer on?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, while it copies. Your files travel through your own PC instead of someone else's server, which is what keeps them private. You can keep using your computer, or leave it on overnight. If it goes to sleep, shuts down or loses internet, nothing is lost: open NexMove again and it copies only the files that are left." } },
     { "@type": "Question", "name": "Does it work on Mac?", "acceptedAnswer": { "@type": "Answer", "text": "Not yet. The first version is for Windows. Join early access and tell us if you need a Mac version." } }
   ]
@@ -67,15 +69,20 @@
     <img class="hero-bg" src="/img/hero-bg.svg" width="520" height="500" alt="" aria-hidden="true">
     <div class="wrap">
       <p class="badge"><i></i>NEXMOVE BY K-NEX · COMING SOON FOR WINDOWS</p>
-      <h1>Move from Dropbox to Google Drive.<br><em>Then cancel with confidence.</em></h1>
-      <p class="lead">NexMove copies every file from your Dropbox into Google Drive, checks each one against the original, and tells you when it is safe to stop paying for Dropbox. No settings, no disk space, and no servers in between — not ours, not anyone’s.</p>
+      <h1>Move out of Dropbox or OneDrive.<br><em>Then cancel with confidence.</em></h1>
+      <p class="lead">NexMove copies every file to its new home, checks each one against the original, and tells you when it is safe to stop paying for the old plan. No settings, no disk space, and no servers in between — not ours, not anyone’s.</p>
+      <ul class="routes" aria-label="What NexMove moves">
+        <li>Dropbox <b>→</b> Google Drive</li>
+        <li>Dropbox <b>→</b> OneDrive</li>
+        <li>OneDrive <b>→</b> Google Drive</li>
+      </ul>
       <div class="actions">
         <a class="btn" href="#early">Get early access</a>
         <a class="btn ghost" href="#how">See how it works</a>
       </div>
       <ul class="facts">
         <li>Runs on your own PC</li>
-        <li>Never deletes from Dropbox</li>
+        <li>Never deletes your originals</li>
         <li>Every file verified</li>
         <li>One-time price</li>
       </ul>
@@ -86,7 +93,7 @@
     <div class="wrap">
       <p class="kicker">/ HOW IT WORKS</p>
       <h2>Four steps. You only click.</h2>
-      <p class="intro">You sign in on Dropbox’s and Google’s own pages. NexMove never sees your passwords.</p>
+      <p class="intro">You sign in on Dropbox’s, Microsoft’s and Google’s own pages. NexMove never sees your passwords.</p>
       <figure id="film" class="film">
         <video controls preload="none" playsinline poster="/media/nexmove-film-poster.png" width="1920" height="1080" aria-label="NexMove: one app, three moves">
           <source src="/media/nexmove-film-routes-65s.mp4" type="video/mp4">
@@ -95,10 +102,10 @@
         <figcaption>NexMove in 65 seconds · preview — app screens are from our design and may change before launch. The two OneDrive moves are still being tested.</figcaption>
       </figure>
       <div class="steps">
-        <div><h3>Sign in to Dropbox</h3><p>NexMove reads your folders and shows how much there is to move.</p></div>
-        <div><h3>Sign in to Google</h3><p>It checks your Google Drive has enough free space before anything starts.</p></div>
-        <div><h3>Copy and verify</h3><p>Files are copied into a folder called “From Dropbox”, then every file is compared with the original.</p></div>
-        <div><h3>Cancel Dropbox</h3><p>When everything matches, NexMove tells you it is safe and shows you where to cancel.</p></div>
+        <div><h3>Pick your move</h3><p>Dropbox to Google Drive, Dropbox to OneDrive, or OneDrive to Google Drive.</p></div>
+        <div><h3>Sign in to both</h3><p>NexMove shows how much there is to move, and checks there is enough free space where it is going.</p></div>
+        <div><h3>Copy and verify</h3><p>Files are copied into a new folder called “From Dropbox” or “From OneDrive”, then every file is compared with the original.</p></div>
+        <div><h3>Cancel or downgrade</h3><p>When everything matches, NexMove tells you it is safe and shows you what to do before you cancel Dropbox or change your OneDrive plan.</p></div>
       </div>
     </div>
   </section>
@@ -109,10 +116,10 @@
       <h2>Built for people who just want it done, safely.</h2>
       <p class="intro">Moving files by hand works for a few folders. With years of photos and documents, it is easy to miss something and only find out after you cancel.</p>
       <div class="cards">
-        <div><p class="tag">NO MIDDLEMAN</p><h3>No servers in between — not ours, not anyone’s</h3><p>Your files travel from your Dropbox, through your own PC, into your Google Drive. No K-NEX server or third-party cloud ever sees or stores a copy.</p></div>
-        <div><p class="tag">READ-ONLY</p><h3>Dropbox is left untouched</h3><p>NexMove only reads your Dropbox. It never changes, moves or deletes anything there, so your originals are safe until you decide to cancel.</p></div>
-        <div><p class="tag">NO DISK SPACE</p><h3>Your hard drive stays free</h3><p>Files stream through your PC’s memory, piece by piece. Nothing is saved to your hard drive, so even a nearly full laptop can move a large Dropbox.</p></div>
-        <div><p class="tag">VERIFIED</p><h3>Nothing left behind</h3><p>When copying finishes, every folder and file is checked against Dropbox. You see exactly what matched, and anything that needs a second look.</p></div>
+        <div><p class="tag">NO MIDDLEMAN</p><h3>No servers in between — not ours, not anyone’s</h3><p>Your files travel from your Dropbox or OneDrive, through your own PC, into your Google Drive or OneDrive. No K-NEX server or third-party cloud ever sees or stores a copy.</p></div>
+        <div><p class="tag">ORIGINALS SAFE</p><h3>Your originals are left untouched</h3><p>NexMove only copies from your Dropbox or OneDrive. It never changes, moves or deletes anything there, so your originals are safe until you decide to cancel.</p></div>
+        <div><p class="tag">NO DISK SPACE</p><h3>Your hard drive stays free</h3><p>Files stream through your PC’s memory, piece by piece. Nothing is saved to your hard drive, so even a nearly full laptop can move a large Dropbox or OneDrive.</p></div>
+        <div><p class="tag">VERIFIED</p><h3>Nothing left behind</h3><p>When copying finishes, every folder and file is checked against the original. You see exactly what matched, and anything that needs a second look.</p></div>
         <div><p class="tag">RESUMES</p><h3>Stop and carry on</h3><p>Close the laptop or lose Wi-Fi halfway. Next time you press Start, NexMove skips everything already copied and moves only what is left. No side-by-side windows, no hunting for what is missing.</p></div>
         <div><p class="tag">HUMAN SUPPORT</p><h3>Help from the person who built it</h3><p>Stuck? Press “Get help” in the app and you will hear back from the founder, not a ticket queue.</p></div>
       </div>
@@ -134,6 +141,7 @@
           <li>Free to install, sign in and preview</li>
           <li>Free test copy up to 200 MB</li>
           <li>Pay only when you copy everything</li>
+          <li>One licence for each account you move from, Dropbox or OneDrive</li>
         </ul>
       </div>
     </div>
@@ -143,15 +151,35 @@
     <div class="wrap split">
       <h2>FAQ</h2>
       <div class="faq">
-        <details><summary>Does NexMove delete anything from my Dropbox?</summary><p>No. NexMove only reads your Dropbox. It never changes, moves or deletes your Dropbox files. You decide when to cancel.</p></details>
-        <details><summary>Can K-NEX see my files?</summary><p>No. NexMove runs on your own Windows PC. Your files go from Dropbox to your computer and on to Google Drive. There are no servers in between, not ours and not anyone else’s. See our <a href="/privacy.html#nexmove">Privacy Policy</a>.</p></details>
-        <details><summary>Do I need free space on my computer?</summary><p>No. Unlike copying between the Dropbox and Google Drive desktop apps, NexMove never saves your files to your hard drive. You only need room to install the app.</p></details>
-        <details><summary>What can NexMove see in my Google Drive?</summary><p>Only the files it creates. NexMove copies everything into a folder called “From Dropbox” and cannot see or change any of your other Google Drive files.</p></details>
-        <details><summary>What if my internet drops halfway?</summary><p>Open NexMove again and press Start. It checks what is already in Google Drive and copies only the files that are still missing. Files already copied are not copied again.</p></details>
+        <details><summary>Which moves does NexMove do, and which not?</summary>
+          <div>
+            <p>Three, in one app. You pick one when you open it:</p>
+            <ul>
+              <li>Dropbox → Google Drive</li>
+              <li>Dropbox → OneDrive</li>
+              <li>OneDrive → Google Drive</li>
+            </ul>
+            <p>It does <strong>not</strong> do:</p>
+            <ul>
+              <li>Moves out of Google Drive, such as Google Drive → Dropbox or Google Drive → OneDrive.</li>
+              <li>Moves into Dropbox, such as OneDrive → Dropbox.</li>
+              <li>Moves within one service, such as one Dropbox or OneDrive account to another.</li>
+              <li>Work or school OneDrive (OneDrive for Business) or SharePoint. Only personal Microsoft accounts.</li>
+              <li>Files in OneDrive Personal Vault. Move them out of the vault first.</li>
+              <li>Other services, such as iCloud Drive, Box or Mega.</li>
+            </ul>
+          </div>
+        </details>
+        <details><summary>Does NexMove delete anything where my files are now?</summary><p>No. NexMove only copies from your Dropbox or OneDrive. It never changes, moves or deletes anything there. You decide when to cancel.</p></details>
+        <details><summary>Can K-NEX see my files?</summary><p>No. NexMove runs on your own Windows PC. Your files go from Dropbox or OneDrive to your computer and on to Google Drive or OneDrive. There are no servers in between, not ours and not anyone else’s. See our <a href="/privacy.html#nexmove">Privacy Policy</a>.</p></details>
+        <details><summary>Do I need free space on my computer?</summary><p>No. Unlike copying between two cloud desktop apps, NexMove never saves your files to your hard drive. You only need room to install the app.</p></details>
+        <details><summary>What can NexMove see where my files go?</summary><p>In Google Drive, only the files it creates: it cannot see or change any of your other Google Drive files. OneDrive has no permission that narrow, so NexMove asks for access to your OneDrive files, but it only adds its own folder and does not change or delete anything else. Your files go into a new folder called “From Dropbox” or “From OneDrive”.</p></details>
+        <details><summary>What if my internet drops halfway?</summary><p>Open NexMove again and press Start. It checks what has already arrived and copies only the files that are still missing. Files already copied are not copied again.</p></details>
+        <details><summary>I have two accounts. Do I need two licences?</summary><p>Yes. One licence moves one account you move from, a Dropbox or a OneDrive. Where the files go does not matter.</p></details>
         <details><summary>Do I need to keep my computer on?</summary><p>Yes, while it copies. Your files travel through your own PC instead of someone else’s server, which is what keeps them private. You can keep using your computer, or leave it on overnight. If it goes to sleep, shuts down or loses internet, nothing is lost: open NexMove again and it copies only the files that are left.</p></details>
         <details><summary>Is there an early-access price?</summary><p>Yes. The first 100 people who join early access can buy NexMove for $14.99 instead of $19.99. We’ll email you a discount code on launch day. <a href="#early">Join early access</a>.</p></details>
         <details><summary>Does it work on Mac?</summary><p>Not yet. The first version is for Windows. Join early access and tell us if you need a Mac version.</p></details>
-        <details><summary>Can I do this without an app?</summary><p>Yes, for small amounts. Our <a href="/guides/move-dropbox-to-google-drive/">step-by-step guide</a> shows the free ways to do it yourself, and when an app saves you time.</p></details>
+        <details><summary>Can I do this without an app?</summary><p>Yes, for small amounts. Our <a href="/guides/move-dropbox-to-google-drive/">step-by-step guide for Dropbox to Google Drive</a> shows the free ways to do it yourself, and when an app saves you time.</p></details>
       </div>
     </div>
   </section>

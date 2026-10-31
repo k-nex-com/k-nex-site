@@ -33,7 +33,7 @@
       <tr><td data-label="When">You join early access</td><td data-label="What">Your email address</td><td data-label="Why">To tell you when our products launch</td><td data-label="Legal basis">Your consent</td></tr>
       <tr><td data-label="When">You send a message</td><td data-label="What">Your name (optional), email address, message and any screenshots you attach</td><td data-label="Why">To reply to you</td><td data-label="Legal basis">Our legitimate interest in answering enquiries</td></tr>
       <tr><td data-label="When">You buy NexMove</td><td data-label="What">From Lemon Squeezy, our reseller: your name, email address, country, what you bought, the price and tax paid, and your licence key. We do not see your card details.</td><td data-label="Why">To give you your licence, help you with it, handle refunds and keep the accounting records the law requires</td><td data-label="Legal basis">To perform our contract with you, and to meet our legal obligations (tax records)</td></tr>
-      <tr><td data-label="When">You enter your licence key in NexMove, and each time you start copying after that</td><td data-label="What">Sent to Lemon Squeezy, not to K-NEX: your licence key, and when you first enter it, a label with the NexMove version, operating system and a short code made from your Dropbox account ID. The code is a one-way hash: it cannot be turned back into your account ID, name or email.</td><td data-label="Why">To check that the key is valid and has not been refunded, to count the computers it is used on, and to keep one licence to one Dropbox account</td><td data-label="Legal basis">To perform our contract with you, and our legitimate interest in preventing misuse of licences</td></tr>
+      <tr><td data-label="When">You enter your licence key in NexMove, and each time you start copying after that</td><td data-label="What">Sent to Lemon Squeezy, not to K-NEX: your licence key, and when you first enter it, a label with the NexMove version, operating system and a short code made from the ID of the account you copy from (your Dropbox account ID, or your OneDrive’s drive ID). The code is a one-way hash: it cannot be turned back into your account ID, name or email.</td><td data-label="Why">To check that the key is valid and has not been refunded, to count the computers it is used on, and to keep one licence to one account you copy from</td><td data-label="Legal basis">To perform our contract with you, and our legitimate interest in preventing misuse of licences</td></tr>
       <tr><td data-label="When">You press “Send report” or “Get help” in NexMove</td><td data-label="What">The report you see before sending: app and Windows version, the step that went wrong, the error message, recent app log lines (which can include file and folder names unless you choose to hide them), and your email address and message if you add them</td><td data-label="Why">To find and fix the problem and, if you gave your email, to reply</td><td data-label="Legal basis">Our legitimate interest in supporting our product</td></tr>
       <tr><td data-label="When">You visit the site</td><td data-label="What">Technical data such as your IP address and browser type, logged by our hosting and font providers</td><td data-label="Why">To deliver and secure the website</td><td data-label="Legal basis">Our legitimate interest in running the site</td></tr>
     </tbody>
@@ -71,20 +71,21 @@
   <p>If you are unhappy with how we handle your data, you can complain to the Information Commissioner’s Office at <a href="https://ico.org.uk/make-a-complaint/">ico.org.uk</a>. We would appreciate the chance to resolve it with you first.</p>
 
   <h2 id="nexmove">NexMove (desktop app)</h2>
-  <p>NexMove copies your files from Dropbox to Google Drive. It runs entirely on your own Windows computer. Your files travel from Dropbox to your computer and on to Google Drive; they never pass through, and are never stored on, K-NEX servers.</p>
+  <p>NexMove copies your files from Dropbox to Google Drive, from Dropbox to OneDrive, or from OneDrive to Google Drive. It runs entirely on your own Windows computer. Your files travel from where they are now to your computer and on to where they are going; they never pass through, and are never stored on, K-NEX servers.</p>
 
-  <h3>Signing in to Dropbox and Google</h3>
-  <p>You sign in on Dropbox’s and Google’s own web pages. K-NEX never sees your passwords. After you sign in, Dropbox and Google give NexMove an access token, which is saved only on your computer, in NexMove’s settings folder. It is never sent to K-NEX.</p>
+  <h3>Signing in to Dropbox, OneDrive and Google</h3>
+  <p>You sign in on Dropbox’s, Microsoft’s and Google’s own web pages, and only to the two services in the move you picked. K-NEX never sees your passwords. After you sign in, each service gives NexMove an access token, which is saved only on your computer, in NexMove’s settings folder. It is never sent to K-NEX.</p>
   <ul>
     <li><strong>Dropbox:</strong> NexMove reads your files and folders so it can copy them. It does not change, move or delete anything in your Dropbox.</li>
-    <li><strong>Google Drive:</strong> NexMove asks only for access to files it creates itself (the <code>drive.file</code> permission). It creates a folder called “From Dropbox”, copies your files into it and checks them afterwards. It cannot see or change any other files in your Google Drive.</li>
+    <li><strong>Google Drive:</strong> NexMove asks only for access to files it creates itself (the <code>drive.file</code> permission). It creates a folder called “From Dropbox” or “From OneDrive”, copies your files into it and checks them afterwards. It cannot see or change any other files in your Google Drive.</li>
+    <li><strong>OneDrive:</strong> Microsoft has no permission as narrow as Google’s, so NexMove asks for access to your OneDrive files. Right after you sign in, it asks Microsoft which OneDrive belongs to your account (the drive’s ID and type) so it uses the right one. When you copy from OneDrive, NexMove reads your files and folders and does not change, move or delete anything; it cannot open your Personal Vault and skips it. When you copy to OneDrive, it creates a folder called “From Dropbox”, copies your files into it and checks them, and does not change or delete your other files.</li>
   </ul>
 
   <h3>What stays on your computer</h3>
   <p>NexMove keeps a log of what it copied and any errors, and remembers which folders you chose, so it can carry on where it stopped. It also keeps your licence key and how much of the free test copy you have used. These stay on your computer. NexMove has no analytics or tracking and does not send usage data to K-NEX.</p>
 
   <h3>When something leaves your computer</h3>
-  <p>If you have a licence, NexMove asks Dropbox for your account ID and keeps a short one-way code made from it on your computer, so the licence stays with one Dropbox account. When you enter a licence key, NexMove sends the key and a label with its version, operating system and that code to Lemon Squeezy. Each time you start copying, it sends the key again to check it still works. Nothing else about you or your files is sent.</p>
+  <p>If you have a licence, NexMove asks Dropbox for your account ID, or Microsoft for your OneDrive’s drive ID, and keeps a short one-way code made from it on your computer, so the licence stays with one account you copy from. When you enter a licence key, NexMove sends the key and a label with its version, operating system and that code to Lemon Squeezy. Each time you start copying, it sends the key again to check it still works. Nothing else about you or your files is sent.</p>
   <p>Something is sent to K-NEX only when you press “Send report” or “Get help”. Before anything is sent, NexMove shows you exactly what will be sent. Sign-in tokens are always removed, you can choose to hide file and folder names, and the contents of your files are never sent. See the table above for what a report contains and how long we keep it.</p>
 
   <h3>Google user data</h3>
@@ -95,8 +96,9 @@
   <ul>
     <li>Google: <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a></li>
     <li>Dropbox: <a href="https://www.dropbox.com/account/connected_apps">dropbox.com/account/connected_apps</a></li>
+    <li>Microsoft (OneDrive): <a href="https://account.live.com/consent/Manage">account.live.com/consent/Manage</a></li>
   </ul>
-  <p>Files NexMove copied stay in your Google Drive until you delete them.</p>
+  <p>Files NexMove copied stay in your Google Drive or OneDrive until you delete them.</p>
 
   <h2>Changes to this policy</h2>
   <p>If we change this policy, we will update the date at the top of this page. If the change is significant, we will tell early-access members by email.</p>
