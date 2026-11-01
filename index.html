@@ -15,9 +15,9 @@
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/Satoshi-Variable.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+@font-face{font-family:'Satoshi';src:url(/fonts/Satoshi-Variable.woff2) format('woff2');font-weight:300 900;font-style:normal;font-display:swap}
 :root{color-scheme:only light}
 body{margin:0;background:#F7F4EC}
 a{color:#1F47B8}a:hover{color:#163A99}
@@ -28,14 +28,20 @@ summary::-webkit-details-marker{display:none}
 @keyframes knexScan{from{transform:translateX(-100%)}to{transform:translateX(400%)}}
 @media (prefers-reduced-motion: reduce){*{animation:none!important}}
 .knex-input{box-sizing:border-box;height:54px;min-width:0;padding:0 22px;border:1px solid #D6D0C2;border-radius:999px;background:#FFFFFF;color:#0F1A33;font:inherit;font-size:15px}
-textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius:18px;resize:vertical;line-height:1.5}
 .knex-input::placeholder{color:#9AA0AD}
 .knex-input:focus{outline:none;border-color:#1F47B8}
 .knex-input[aria-invalid="true"]{border-color:#C93A2C}
 .knex-btn{height:54px;padding:0 28px;border:0;border-radius:999px;background:#D2392A;color:#FFFFFF;font:inherit;font-size:15px;font-weight:700;cursor:pointer}
 .knex-btn:hover{background:#B42F22}
-#contact .knex-status{color:#F7F4EC}#contact .knex-status.err{color:#FFD5CF}#contact .knex-status.ok{color:#C7F2E2}
-#contact a{color:#F7F4EC}
+#early .knex-status{color:#F7F4EC}#early .knex-status.err{color:#FFD5CF}#early .knex-status.ok{color:#C7F2E2}
+#early a{color:#F7F4EC}
+/* Phone menu: the links hidden from the bar on phones, in a drop-down (same as page.css). */
+.m-menu{display:none}
+.m-menu summary{display:flex;align-items:center;justify-content:center;width:42px;height:42px;box-sizing:border-box;border:1px solid #D6D0C2;border-radius:50%;color:#0F1A33}
+.m-menu[open] summary{border-color:#1F47B8}
+.m-menu nav{position:absolute;right:20px;top:calc(100% - 4px);z-index:20;min-width:210px;display:flex;flex-direction:column;padding:8px;background:#FFFFFF;border:1px solid #E2DCCF;border-radius:16px;box-shadow:0 18px 40px rgba(15,26,51,.14)}
+.m-menu nav a{padding:12px 14px;border-radius:10px;color:#0F1A33;text-decoration:none;font-size:16px}
+.m-menu nav a:hover{background:#F7F4EC}
 .knex-btn:disabled{opacity:.6;cursor:wait}
 .hero-bg{position:absolute;top:120px;right:max(24px,calc(50% - 626px));width:min(500px,40%);height:auto;pointer-events:none}
 .hero-strip{display:block;width:100%;height:auto}
@@ -51,11 +57,11 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
 .steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
 .steps li{display:flex;gap:18px;align-items:flex-start;background:#F7F4EC;border:1px solid #E7E2D6;border-radius:16px;padding:20px}
 .steps svg{flex:none;width:64px;height:64px}
-/* The wide picture only fits beside the headline on wide screens; narrower screens get the strip under the buttons. */
+/* The faint picture sits beside the headline on wide screens; narrower screens get a faint strip under the buttons. The strong picture is on /about/ only. */
 @media (max-width:1279px){.hero-bg{display:none}}
 @media (min-width:1280px){.hero-strip{display:none}}
 /* Phones: keep only the logo and the main button in the menu, show the film instead of the long sample screen, and tighten spacing. */
-@media (max-width:720px){.nav-a{display:none}.cta-band{padding-bottom:120px!important}.desk-only{display:none}.hero-in{padding:56px 20px 40px}.pad{padding:64px 20px}.mock{display:none}}
+@media (max-width:720px){.nav-a{display:none}.m-menu{display:block}.top-nav{gap:10px!important}.hdr{padding-left:20px!important;padding-right:20px!important}.cta-band{padding-bottom:120px!important}.desk-only{display:none}.hero-in{padding:56px 20px 40px}.pad{padding:64px 20px}.mock{display:none}}
 @media (min-width:721px){.phone-only{display:none}}
 /* Gentle reveal on scroll, and the sample screen filling up; only when scripts run and motion is welcome. */
 @media (prefers-reduced-motion: no-preference){
@@ -70,18 +76,8 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
   .js .mock.in .log>div:nth-of-type(2){animation-delay:.6s}.js .mock.in .log>div:nth-of-type(3){animation-delay:1.2s}.js .mock.in .log>div:nth-of-type(4){animation-delay:1.8s}
 }
 .knex-btn:focus-visible,.knex-input:focus-visible{outline:2px solid #1F47B8;outline-offset:3px}
-.knex-status{margin:12px 0 0;min-height:1.6em;font-family:'JetBrains Mono',monospace;font-size:13px;color:#4A5263}
+.knex-status{margin:12px 0 0;min-height:1.6em;font-family:'Satoshi',sans-serif;font-size:13px;color:#4A5263}
 .knex-status.ok{color:#1F47B8}.knex-status.err{color:#C93A2C}
-.knex-label{display:block;margin:0 0 8px;font-family:'JetBrains Mono',monospace;font-size:13px;color:#4A5263}
-.knex-drop{display:flex;align-items:center;justify-content:center;min-height:72px;padding:16px 22px;border:1px dashed #D6D0C2;border-radius:18px;color:#5A6275;font-size:14px;text-align:center;cursor:pointer}
-.knex-drop:hover,.knex-drop.over{border-color:#1F47B8;color:#0F1A33}
-.knex-drop:focus-within{outline:2px solid #1F47B8;outline-offset:3px}
-.knex-drop kbd{font-family:'JetBrains Mono',monospace;font-size:12px;padding:1px 6px;border:1px solid #D6D0C2;border-radius:6px}
-.knex-thumbs{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
-.knex-thumbs:empty{display:none}
-.knex-thumbs li{position:relative;width:96px;height:72px;border:1px solid #D6D0C2;border-radius:10px;overflow:hidden;background:#FFFFFF}
-.knex-thumbs img{display:block;width:100%;height:100%;object-fit:cover}
-.knex-thumbs button{position:absolute;top:4px;right:4px;width:24px;height:24px;padding:0;border:0;border-radius:50%;background:rgba(15,26,51,.85);color:#FFFFFF;font-size:14px;line-height:24px;cursor:pointer}
 .sr,.hp{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 </style>
 <style>html{scroll-behavior:smooth}</style>
@@ -97,35 +93,36 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
 </script>
 </head>
 <body>
-<div style="font-family: 'Space Grotesk', sans-serif; color: #0F1A33; background: #F7F4EC; line-height: 1.6">
+<div style="font-family: 'Satoshi', sans-serif; font-weight: 450; color: #0F1A33; background: #F7F4EC; line-height: 1.6">
 
   <header style="border-bottom: 1px solid #E7E2D6">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 12px 24px; min-height: 72px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between">
+    <div class="hdr" style="position: relative; max-width: 1240px; margin: 0 auto; padding: 12px 24px; min-height: 72px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between">
       <a href="/" aria-label="K-NEX home" style="display: inline-flex; align-items: center; color: #0F1A33"><svg viewBox="0 0 610 136" width="126" height="28" aria-hidden="true" focusable="false"><g transform="scale(1.1333)"><defs><clipPath id="kxh"><rect width="120" height="120" rx="20"/></clipPath></defs><g clip-path="url(#kxh)"><rect width="120" height="120" fill="#1F47B8"/><circle cx="27" cy="26" r="9" fill="#F7F4EC"/><circle cx="93" cy="26" r="9" fill="#E5432F"/><path d="M-14 102L12 70L38 102Z" fill="#157A5F"/><path d="M82 102L108 70L134 102Z" fill="#157A5F"/><path d="M10 102L36 52L62 102Z" fill="#1E9E7A"/><path d="M58 102L84 52L110 102Z" fill="#1E9E7A"/><path d="M32 102L60 34L88 102Z" fill="#23B08A"/><rect y="102" width="120" height="18" fill="#163A99"/></g></g><g transform="translate(190 18)"><path fill="#1F47B8" stroke="#1F47B8" stroke-width="6" stroke-linejoin="round" d="M0 0H22V100H0Z M22 38L54 0H82L22 66Z M40 44L84 100H56L26 60Z"/><rect x="104" y="42" width="34" height="16" rx="8" fill="currentColor"/><path fill="currentColor" transform="translate(-20 0)" d="M172 0H192V100H172Z M236 0H256V100H236Z M172 0H198L256 100H230Z M270 0H290V100H270Z M270 0H338V20H270Z M270 40H330V60H270Z M270 80H338V100H270Z M352 0H378L436 100H410Z M410 0H436L378 100H352Z"/></g></svg></a>
-      <nav style="display: flex; flex-wrap: wrap; gap: 32px; font-size: 14px; align-items: center">
-        <a class="nav-a" href="#how" style="color: #4A5263; text-decoration: none">How it works</a>
+      <nav class="top-nav" aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 32px; font-size: 14px; align-items: center">
         <a class="nav-a" href="nexmove/" style="color: #4A5263; text-decoration: none">NexMove</a>
         <a class="nav-a" href="guides/" style="color: #4A5263; text-decoration: none">Guides</a>
-        <a class="nav-a" href="#founder" style="color: #4A5263; text-decoration: none">Founder</a>
-        <a href="#contact" style="color: #FFFFFF; background: #D2392A; padding: 10px 18px; border-radius: 999px; text-decoration: none; font-weight: 600">Early access</a>
+        <a class="nav-a" href="about/" style="color: #4A5263; text-decoration: none">About</a>
+        <a class="nav-a" href="contact/" style="color: #4A5263; text-decoration: none">Contact</a>
+        <details class="m-menu"><summary aria-label="Menu"><svg width="18" height="14" viewBox="0 0 18 14" aria-hidden="true"><path d="M1 1h16M1 7h16M1 13h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></summary><nav aria-label="Menu"><a href="#how">How it works</a><a href="nexmove/">NexMove</a><a href="guides/">Guides</a><a href="about/">About</a><a href="contact/">Contact</a></nav></details>
+        <a href="#early" style="color: #FFFFFF; background: #D2392A; padding: 10px 18px; border-radius: 999px; text-decoration: none; font-weight: 600">Early access</a>
       </nav>
     </div>
   </header>
 
   <section id="top" style="position: relative; overflow: hidden; background-color: #F7F4EC; background-image: linear-gradient(#ECE7DC 1px, transparent 1px), linear-gradient(90deg, #ECE7DC 1px, transparent 1px); background-size: 64px 64px">
-    <img class="hero-bg" src="img/hero-bg.svg" width="520" height="500" alt="" aria-hidden="true">
+    <img class="hero-bg" src="img/hero-faint.svg" width="520" height="500" alt="" aria-hidden="true">
     <div class="hero-in" style="max-width: 1240px; margin: 0 auto; position: relative">
-      <p style="margin: 0 0 36px; display: inline-flex; gap: 10px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5A6275; border: 1px solid #E2DCCF; background: #FFFFFF; padding: 8px 14px; border-radius: 999px">
+      <p style="margin: 0 0 36px; display: inline-flex; gap: 10px; align-items: center; font-family: 'Satoshi', sans-serif; font-weight: 500; letter-spacing: 0.06em; font-size: 13px; color: #5A6275; border: 1px solid #E2DCCF; background: #FFFFFF; padding: 8px 14px; border-radius: 999px">
         <span style="width: 8px; height: 8px; border-radius: 50%; background: #1E9E7A; animation: knexPulse 1.8s ease-in-out infinite"></span>
         <span><span class="desk-only">NEXMOVE BY K-NEX · </span>COMING SOON FOR WINDOWS</span>
       </p>
       <h1 style="margin: 0 0 28px; font-size: clamp(40px, 9vw, 76px); line-height: 1.04; font-weight: 700; letter-spacing: -0.045em; max-width: 700px">Leaving Dropbox or OneDrive?<br><span style="color: #1F47B8">Copy every file safely, then cancel.</span></h1>
       <p style="margin: 0 0 40px; font-size: 20px; color: #4A5263; max-width: 620px">NexMove is a simple Windows app from K-NEX. It copies everything to Google Drive or OneDrive on your own PC, checks every file, and never deletes your originals.</p>
       <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center">
-        <a href="#contact" style="background: #D2392A; color: #FFFFFF; padding: 16px 26px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 15px">Get early access</a>
+        <a href="#early" style="background: #D2392A; color: #FFFFFF; padding: 16px 26px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 15px">Get early access</a>
         <a href="#how" style="border: 1px solid #D6D0C2; color: #0F1A33; padding: 15px 26px; border-radius: 999px; text-decoration: none; font-weight: 500; font-size: 15px">See how it works</a>
       </div>
-      <p style="margin: 24px 0 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A5263; max-width: 640px">For Windows 10 and 11 · $19.99 once, no subscription · Free 200 MB test · First 100 early-access members pay $14.99</p>
+      <p style="margin: 24px 0 0; font-family: 'Satoshi', sans-serif; font-size: 13px; color: #4A5263; max-width: 640px">For Windows 10 and 11 · $19.99 once, no subscription · Free 200 MB test · First 100 early-access members pay $14.99</p>
 
       <div class="mock rv" style="margin-top: 88px">
       <div style="background: #FFFFFF; border: 1px solid #E2DCCF; border-radius: 18px; overflow: hidden; box-shadow: 0 24px 60px rgba(15,26,51,0.12)">
@@ -133,13 +130,13 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
           <span style="width: 11px; height: 11px; border-radius: 50%; background: #D6D0C2"></span>
           <span style="width: 11px; height: 11px; border-radius: 50%; background: #D6D0C2"></span>
           <span style="width: 11px; height: 11px; border-radius: 50%; background: #D6D0C2"></span>
-          <span style="flex: 1; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #6E7586; margin-right: 50px">nexmove · by k-nex</span>
+          <span style="flex: 1; text-align: center; font-family: 'Satoshi', sans-serif; font-size: 12px; color: #6E7586; margin-right: 50px">nexmove · by k-nex</span>
         </div>
         <div style="display: flex; flex-wrap: wrap">
           <div style="flex: 1 1 560px; min-width: 0; padding: 40px; display: flex; flex-direction: column; gap: 32px; border-right: 1px solid #E7E2D6">
             <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
               <div style="flex: 1 1 170px; border: 1px solid #E2DCCF; border-radius: 12px; padding: 18px 20px; background: #FFFFFF">
-                <p style="margin: 0 0 4px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6E7586">SOURCE</p>
+                <p style="margin: 0 0 4px; font-family: 'Satoshi', sans-serif; font-weight: 500; letter-spacing: 0.06em; font-size: 11px; color: #6E7586">SOURCE</p>
                 <p style="margin: 0; font-weight: 600; font-size: 17px">Dropbox</p>
                 <p style="margin: 0; font-size: 13px; color: #5A6275">4,812 files · 38.2 GB</p>
               </div>
@@ -147,22 +144,22 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
                 <div style="position: absolute; top: 0; left: 0; width: 30%; height: 2px; background: #1F47B8; animation: knexScan 1.6s linear infinite"></div>
               </div>
               <div style="flex: 1 1 170px; border: 1px solid #1F47B8; border-radius: 12px; padding: 18px 20px; background: #E9EEFA">
-                <p style="margin: 0 0 4px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #1F47B8">DESTINATION</p>
+                <p style="margin: 0 0 4px; font-family: 'Satoshi', sans-serif; font-weight: 500; letter-spacing: 0.06em; font-size: 11px; color: #1F47B8">DESTINATION</p>
                 <p style="margin: 0; font-weight: 600; font-size: 17px">Google Drive</p>
                 <p style="margin: 0; font-size: 13px; color: #5A6275">Storage OK</p>
               </div>
             </div>
             <div>
-              <div style="display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 12px"><span style="font-weight: 500">Copying your files</span><span style="font-family: 'JetBrains Mono', monospace; color: #4A5263">72% · about 14 min left</span></div>
+              <div style="display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 12px"><span style="font-weight: 500">Copying your files</span><span style="font-family: 'Satoshi', sans-serif; color: #4A5263">72% · about 14 min left</span></div>
               <div style="height: 6px; background: #E7E2D6; border-radius: 999px; overflow: hidden"><div class="fill" style="width: 72%; height: 100%; background: #1F47B8; border-radius: 999px"></div></div>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; font-family: 'JetBrains Mono', monospace">
+            <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; font-family: 'Satoshi', sans-serif">
               <div style="border: 1px solid #E7E2D6; border-radius: 10px; padding: 14px"><p style="margin: 0; font-size: 11px; color: #6E7586">VERIFIED</p><p style="margin: 2px 0 0; font-size: 18px">3,465</p></div>
               <div style="border: 1px solid #E7E2D6; border-radius: 10px; padding: 14px"><p style="margin: 0; font-size: 11px; color: #6E7586">SERVER</p><p style="margin: 2px 0 0; font-size: 18px; color: #1F47B8">NONE</p></div>
               <div style="border: 1px solid #E7E2D6; border-radius: 10px; padding: 14px"><p style="margin: 0; font-size: 11px; color: #6E7586">ERRORS</p><p style="margin: 2px 0 0; font-size: 18px">0</p></div>
             </div>
           </div>
-          <div class="log" style="flex: 1 1 320px; min-width: 0; padding: 32px; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 2.1; color: #5A6275">
+          <div class="log" style="flex: 1 1 320px; min-width: 0; padding: 32px; font-family: 'Satoshi', sans-serif; font-size: 13px; line-height: 2.1; color: #5A6275">
             <p style="margin: 0 0 8px; font-size: 11px; color: #6E7586">LOG</p>
             <div><span style="color: #1E9E7A">✓</span> Photos/2024 Trip — verified</div>
             <div><span style="color: #1E9E7A">✓</span> Documents/Taxes — verified</div>
@@ -174,11 +171,11 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
       <p style="margin: 14px 0 0; font-size: 13px; color: #4A5263; text-align: center">Example screen with sample numbers. The app may change before launch.</p>
       </div>
     </div>
-    <img class="hero-strip" src="img/hero-strip.svg" width="780" height="210" alt="" aria-hidden="true">
+    <img class="hero-strip" src="img/hero-strip-faint.svg" width="780" height="210" alt="" aria-hidden="true">
   </section>
 
   <div style="background: #1F47B8; overflow: hidden; padding: 22px 0" aria-hidden="true">
-    <div style="display: flex; width: max-content; gap: 56px; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #F7F4EC; animation: knexTicker 34s linear infinite; white-space: nowrap">
+    <div style="display: flex; width: max-content; gap: 56px; font-family: 'Satoshi', sans-serif; font-weight: 500; letter-spacing: 0.06em; font-size: 14px; color: #F7F4EC; animation: knexTicker 34s linear infinite; white-space: nowrap">
       <span>RUNS ON YOUR PC</span><span style="color: #F0A73A">●</span><span>NO SERVERS IN BETWEEN</span><span style="color: #F7F4EC">●</span><span>NO DISK SPACE NEEDED</span><span style="color: #F0A73A">●</span><span>CARRIES ON WHERE IT STOPPED</span><span style="color: #F7F4EC">●</span><span>CHECKS EVERY FILE</span><span style="color: #F0A73A">●</span><span>NEVER DELETES YOUR ORIGINALS</span><span style="color: #F7F4EC">●</span><span>HELP FROM THE PERSON WHO BUILT IT</span><span style="color: #F0A73A">●</span>
       <span>RUNS ON YOUR PC</span><span style="color: #F7F4EC">●</span><span>NO SERVERS IN BETWEEN</span><span style="color: #F0A73A">●</span><span>NO DISK SPACE NEEDED</span><span style="color: #F7F4EC">●</span><span>CARRIES ON WHERE IT STOPPED</span><span style="color: #F0A73A">●</span><span>CHECKS EVERY FILE</span><span style="color: #F7F4EC">●</span><span>NEVER DELETES YOUR ORIGINALS</span><span style="color: #F0A73A">●</span><span>HELP FROM THE PERSON WHO BUILT IT</span><span style="color: #F7F4EC">●</span>
     </div>
@@ -186,7 +183,7 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
 
   <section id="how" style="background: #FFFFFF; border-bottom: 1px solid #E7E2D6">
     <div class="pad" style="max-width: 1240px; margin: 0 auto">
-      <p style="margin: 0 0 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #1F47B8">/ HOW IT WORKS</p>
+      <p style="margin: 0 0 16px; font-family: 'Satoshi', sans-serif; font-weight: 500; letter-spacing: 0.06em; font-size: 13px; color: #1F47B8">/ HOW IT WORKS</p>
       <h2 style="margin: 0 0 48px; font-size: clamp(34px, 7vw, 48px); line-height: 1.1; font-weight: 700; letter-spacing: -0.04em; max-width: 760px">Three steps. Nothing to set up.</h2>
       <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center">
         <div class="rv" style="flex: 1.5 1 520px; min-width: 0">
@@ -203,7 +200,7 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
           <li>
             <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#E9EEFA"/><rect x="12" y="14" width="40" height="9" rx="4.5" fill="#FFFFFF" stroke="#C9D3EE"/><rect x="12" y="27.5" width="40" height="9" rx="4.5" fill="#1F47B8"/><path d="M38 32h8m-3-3 3 3-3 3" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="12" y="41" width="40" height="9" rx="4.5" fill="#FFFFFF" stroke="#C9D3EE"/></svg>
             <div>
-              <p style="margin: 0 0 4px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #1F47B8">01 · PICK YOUR MOVE</p>
+              <p style="margin: 0 0 4px; font-family: 'Satoshi', sans-serif; font-weight: 500; letter-spacing: 0.06em; font-size: 12px; color: #1F47B8">01 · PICK YOUR MOVE</p>
               <h3 style="margin: 0 0 4px; font-size: 19px; font-weight: 600; letter-spacing: -0.02em">Where your files are, and where they go</h3>
               <p style="margin: 0; color: #4A5263; font-size: 15px">Dropbox to Google Drive, Dropbox to OneDrive, or OneDrive to Google Drive.</p>
             </div>
@@ -211,7 +208,7 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
           <li>
             <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#FDF1DC"/><path d="M24 30v-6a8 8 0 0 1 16 0v6" stroke="#C9851F" stroke-width="4" fill="none"/><rect x="18" y="29" width="28" height="22" rx="5" fill="#F0A73A"/><circle cx="32" cy="38" r="3.2" fill="#FFFFFF"/><path d="M32 40v5" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"/></svg>
             <div>
-              <p style="margin: 0 0 4px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8A5A12">02 · SIGN IN TO BOTH</p>
+              <p style="margin: 0 0 4px; font-family: 'Satoshi', sans-serif; font-weight: 500; letter-spacing: 0.06em; font-size: 12px; color: #8A5A12">02 · SIGN IN TO BOTH</p>
               <h3 style="margin: 0 0 4px; font-size: 19px; font-weight: 600; letter-spacing: -0.02em">On their own pages</h3>
               <p style="margin: 0; color: #4A5263; font-size: 15px">You sign in on Dropbox’s, Microsoft’s and Google’s own pages. NexMove never sees your passwords.</p>
             </div>
@@ -219,7 +216,7 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
           <li>
             <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#E3F4EC"/><circle cx="32" cy="25" r="11" fill="#1E9E7A"/><path d="M26.5 25l4 4 7-7.5" stroke="#FFFFFF" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="12" y="42" width="40" height="7" rx="3.5" fill="#FFFFFF"/><rect x="12" y="42" width="40" height="7" rx="3.5" fill="#1E9E7A" opacity=".85"/></svg>
             <div>
-              <p style="margin: 0 0 4px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #157A5F">03 · PRESS START</p>
+              <p style="margin: 0 0 4px; font-family: 'Satoshi', sans-serif; font-weight: 500; letter-spacing: 0.06em; font-size: 12px; color: #157A5F">03 · PRESS START</p>
               <h3 style="margin: 0 0 4px; font-size: 19px; font-weight: 600; letter-spacing: -0.02em">Copied, then checked</h3>
               <p style="margin: 0; color: #4A5263; font-size: 15px">Files go into a new folder, then each one is checked to be the same size as the original. If it stops, it copies only what is left.</p>
             </div>
@@ -235,13 +232,13 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
 
   <section id="product" style="background: #163A99">
     <div class="pad on-blue" style="max-width: 1240px; margin: 0 auto">
-    <h2 style="margin: 0 0 24px; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 400; color: #F0A73A">/ PRODUCTS</h2>
+    <h2 style="margin: 0 0 24px; font-family: 'Satoshi', sans-serif; font-weight: 500; letter-spacing: 0.06em; font-size: 13px; font-weight: 400; color: #F0A73A">/ PRODUCTS</h2>
     <div style="display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
       <div class="rv" style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
-        <span style="align-self: flex-start; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #FFFFFF; background: #1E9E7A; padding: 4px 10px; border-radius: 999px">COMING SOON FOR WINDOWS</span>
+        <span style="align-self: flex-start; font-family: 'Satoshi', sans-serif; font-weight: 500; letter-spacing: 0.06em; font-size: 13px; color: #FFFFFF; background: #1E9E7A; padding: 4px 10px; border-radius: 999px">COMING SOON FOR WINDOWS</span>
         <h3 style="margin: 0; font-size: clamp(44px, 8vw, 60px); line-height: 1; font-weight: 700; letter-spacing: -0.04em; color: #FFFFFF">NexMove</h3>
         <p style="margin: 0; color: rgba(247,244,236,.88); font-size: 18px; max-width: 600px">Stop paying for cloud storage you no longer need, without worrying about your files. NexMove copies everything, checks every file, and never deletes your originals, so you can cancel or downgrade the old plan with confidence.</p>
-        <ul aria-label="What NexMove copies, with a free guide for each" style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px">
+        <ul aria-label="What NexMove copies, with a free guide for each" style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; font-family: 'Satoshi', sans-serif; font-size: 13px">
           <li><a href="guides/move-dropbox-to-google-drive/" style="display: inline-block; border: 1px solid rgba(247,244,236,.4); border-radius: 999px; padding: 6px 14px; color: #F7F4EC; text-decoration: none">Dropbox <span style="color: #F0A73A">→</span> Google Drive</a></li>
           <li><a href="guides/move-dropbox-to-onedrive/" style="display: inline-block; border: 1px solid rgba(247,244,236,.4); border-radius: 999px; padding: 6px 14px; color: #F7F4EC; text-decoration: none">Dropbox <span style="color: #F0A73A">→</span> OneDrive</a></li>
           <li><a href="guides/move-onedrive-to-google-drive/" style="display: inline-block; border: 1px solid rgba(247,244,236,.4); border-radius: 999px; padding: 6px 14px; color: #F7F4EC; text-decoration: none">OneDrive <span style="color: #F0A73A">→</span> Google Drive</a></li>
@@ -252,35 +249,17 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
         </div>
       </div>
       <div class="rv" style="flex: 0 1 360px; min-width: 0; border-radius: 20px; padding: 32px; background: #FFFFFF; color: #0F1A33; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 24px 60px rgba(8,18,48,.35)">
-        <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A5263">PRICE</p>
+        <p style="margin: 0; font-family: 'Satoshi', sans-serif; font-weight: 500; letter-spacing: 0.06em; font-size: 13px; color: #4A5263">PRICE</p>
         <p style="margin: 0; font-size: 48px; font-weight: 700; letter-spacing: -0.04em; line-height: 1">$19.99 <span style="display: inline-block; white-space: nowrap; font-size: 16px; font-weight: 500; color: #4A5263; letter-spacing: 0">one-time</span></p>
         <ul style="margin: 0; padding-left: 1.2em; color: #4A5263; font-size: 15px">
           <li>No subscription</li>
           <li>Free 200 MB test before you pay</li>
           <li>First 100 early-access members pay $14.99</li>
         </ul>
-        <a href="#contact" style="margin-top: 6px; align-self: flex-start; background: #D2392A; color: #FFFFFF; padding: 14px 24px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 15px">Get early access</a>
+        <a href="#early" style="margin-top: 6px; align-self: flex-start; background: #D2392A; color: #FFFFFF; padding: 14px 24px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 15px">Get early access</a>
         <a href="refund.html" style="font-size: 14px; color: #1F47B8">Refund policy</a>
       </div>
     </div>
-    </div>
-  </section>
-
-  <section id="founder" style="background: #E3F1EA">
-    <h2 class="sr">Founder</h2>
-    <div class="pad" style="max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 48px 64px; align-items: flex-start">
-      <div class="rv" style="flex: 2 1 580px; min-width: 0">
-        <span aria-hidden="true" style="display: block; height: 64px; font-size: 120px; line-height: 1; font-weight: 700; color: #1E9E7A">“</span>
-        <p style="margin: 0; font-size: clamp(26px, 6vw, 36px); line-height: 1.35; font-weight: 600; letter-spacing: -0.03em">People aren’t falling behind technology. Technology just hasn’t reached people yet. K-NEX exists to close that last gap.</p>
-      </div>
-      <div class="rv" style="flex: 1 1 280px; min-width: 0; border-left: 3px solid #1E9E7A; padding-left: 28px; display: flex; flex-direction: column; gap: 18px; align-self: flex-end">
-        <div>
-          <p style="margin: 0; font-weight: 700; font-size: 18px">Tim Kim</p>
-          <p style="margin: 4px 0 0; font-family: 'JetBrains Mono', monospace; color: #4A5263; font-size: 13px">FOUNDER · K-NEX</p>
-        </div>
-        <p style="margin: 0; color: #4A5263; font-size: 16px">I’m Tim Kim. I run K-NEX on my own as a sole trader in the UK, and I read and answer every email myself.</p>
-        <p style="margin: 0; font-size: 15px"><a href="mailto:tim.kim@k-nex.com">tim.kim@k-nex.com</a></p>
-      </div>
     </div>
   </section>
 
@@ -289,12 +268,11 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
       <h2 style="margin: 0 0 24px; font-size: 44px; font-weight: 700; letter-spacing: -0.04em">FAQ</h2>
       <div class="desk-only" style="border-radius: 18px; padding: 24px; background: #FFFFFF; border: 1px solid #E7E2D6">
         <p style="margin: 0 0 6px; font-weight: 600; font-size: 17px">Still unsure?</p>
-        <p style="margin: 0 0 14px; color: #4A5263; font-size: 15px">Email Tim. You’ll get a reply from the person who builds NexMove.</p>
-        <a href="mailto:tim.kim@k-nex.com" style="font-weight: 600; font-size: 15px">tim.kim@k-nex.com</a>
+        <p style="margin: 0 0 14px; color: #4A5263; font-size: 15px">Ask us anything. You’ll get a reply from the person who builds NexMove.</p>
+        <a href="contact/" style="font-weight: 600; font-size: 15px">Send a question →</a>
       </div>
     </div>
     <div style="flex: 2 1 580px; min-width: 0; border-top: 1px solid #E2DCCF">
-      <details style="border-bottom: 1px solid #E2DCCF; padding: 24px 0"><summary style="display: flex; justify-content: space-between; gap: 16px; font-weight: 600; font-size: 18px">Who is behind K-NEX?<span aria-hidden="true" style="color: #1F47B8">+</span></summary><p style="margin: 14px 0 0; color: #4A5263; font-size: 16px">Tim Kim, a sole trader in the United Kingdom. K-NEX is one person, so when you email, the person who builds NexMove reads it and replies.</p></details>
       <details style="border-bottom: 1px solid #E2DCCF; padding: 24px 0"><summary style="display: flex; justify-content: space-between; gap: 16px; font-weight: 600; font-size: 18px">Can K-NEX see my files?<span aria-hidden="true" style="color: #1F47B8">+</span></summary><p style="margin: 14px 0 0; color: #5A6275; font-size: 16px">No. The app runs only on your computer. Your files go from your Dropbox or OneDrive, through your PC, to your Google Drive or OneDrive, never through our servers or anyone else’s.</p></details>
       <details style="border-bottom: 1px solid #E2DCCF; padding: 24px 0"><summary style="display: flex; justify-content: space-between; gap: 16px; font-weight: 600; font-size: 18px">Which moves does NexMove do, and which not?<span aria-hidden="true" style="color: #1F47B8">+</span></summary>
         <div style="margin: 14px 0 0; color: #5A6275; font-size: 16px">
@@ -320,13 +298,13 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
     </div>
   </section>
 
-  <section id="contact" class="pad" style="max-width: 1240px; margin: 0 auto; padding-top: 0">
+  <section id="early" class="pad" style="max-width: 1240px; margin: 0 auto; padding-top: 0">
     <div class="cta-band" style="border-radius: 26px; overflow: hidden; padding: 72px clamp(24px, 5vw, 48px) 200px; background: #1F47B8 url(img/peaks-band.svg) bottom center / 100% auto no-repeat; color: #F7F4EC; display: flex; flex-wrap: wrap; gap: 40px; align-items: center; justify-content: space-between">
       <div style="flex: 1 1 440px; min-width: 0">
         <h2 style="margin: 0 0 10px; font-size: clamp(34px, 8vw, 52px); line-height: 1.05; font-weight: 700; letter-spacing: -0.04em">Get NexMove <span style="color: #F0A73A">first</span>.</h2>
         <p style="margin: 0; color: rgba(247,244,236,.85); font-size: 17px">Join early access and we’ll email you on launch day. The first 100 members pay <strong style="color: #FFFFFF">$14.99</strong> instead of $19.99. No card needed now. No spam, ever.</p>
       </div>
-      <form data-kind="early-access" novalidate style="flex: 1 1 400px; min-width: 0">
+      <form data-kind="early-access" data-source="home" novalidate style="flex: 1 1 400px; min-width: 0">
         <div style="display: flex; flex-wrap: wrap; gap: 10px">
           <label for="early-email" class="sr">Email address</label>
           <input id="early-email" class="knex-input" name="email" type="email" required autocomplete="email" placeholder="you@example.com" style="flex: 1 1 240px">
@@ -339,51 +317,12 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
     </div>
   </section>
 
-  <section id="ask" style="background: #FFFFFF; border-top: 1px solid #E7E2D6">
-    <div class="pad" style="max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 48px 64px">
-      <div style="flex: 1 1 380px; min-width: 0">
-        <p style="margin: 0 0 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #1F47B8">/ CONTACT</p>
-        <h2 style="margin: 0 0 20px; font-size: 44px; line-height: 1.1; font-weight: 700; letter-spacing: -0.04em">A question, or an IT headache?</h2>
-        <p style="margin: 0 0 24px; color: #4A5263; font-size: 17px">Tell us what you’re stuck on. You’ll get a reply from the person who builds the product, not a ticket number.</p>
-        <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #5A6275">Prefer email? <a href="mailto:tim.kim@k-nex.com">tim.kim@k-nex.com</a></p>
-      </div>
-      <form data-kind="contact" novalidate style="flex: 1.2 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
-        <div style="display: flex; flex-wrap: wrap; gap: 18px">
-          <div style="flex: 1 1 200px; min-width: 0">
-            <label class="knex-label" for="contact-name">NAME</label>
-            <input id="contact-name" class="knex-input" name="name" type="text" autocomplete="name" style="width: 100%">
-          </div>
-          <div style="flex: 1 1 200px; min-width: 0">
-            <label class="knex-label" for="contact-email">EMAIL *</label>
-            <input id="contact-email" class="knex-input" name="email" type="email" required autocomplete="email" style="width: 100%">
-          </div>
-        </div>
-        <div>
-          <label class="knex-label" for="contact-message">MESSAGE *</label>
-          <textarea id="contact-message" class="knex-input" name="message" required maxlength="5000" style="width: 100%" placeholder="e.g. I want to cancel Dropbox but I'm scared of losing my photos."></textarea>
-        </div>
-        <div>
-          <span class="knex-label">SCREENSHOTS <span style="color: #4A5263">· OPTIONAL, UP TO 5</span></span>
-          <label class="knex-drop" for="contact-files">
-            <input id="contact-files" class="sr" type="file" accept="image/png,image/jpeg,image/webp,image/gif" multiple>
-            <span class="desk-only">Paste with <kbd>Ctrl</kbd> + <kbd>V</kbd>, drop images here, or <u>browse</u></span><span class="phone-only">Tap to add screenshots</span>
-          </label>
-          <ul class="knex-thumbs" aria-label="Attached screenshots"></ul>
-        </div>
-        <input class="hp" name="_gotcha" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center">
-          <button class="knex-btn" type="submit">Send message</button>
-          <span style="font-size: 13px; color: #6E7586">See our <a href="privacy.html">Privacy Policy</a>.</span>
-        </div>
-        <p class="knex-status" role="status" aria-live="polite" style="margin: 0"></p>
-      </form>
-    </div>
-  </section>
-
   <footer style="background: #163A99 url(img/waves.svg) top left / 80px 40px repeat-x; padding-top: 40px">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 32px 24px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: rgba(247,244,236,.8)">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 32px 24px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; font-family: 'Satoshi', sans-serif; font-weight: 500; letter-spacing: 0.06em; font-size: 12px; color: rgba(247,244,236,.8)">
       <span>© 2026 K-NEX · RUN BY TIM KIM, SOLE TRADER, UNITED KINGDOM · NEXT-GENERATION IT, MADE SIMPLE</span>
       <span style="display: flex; flex-wrap: wrap; gap: 24px">
+        <a href="about/" style="color: #F7F4EC">ABOUT</a>
+        <a href="contact/" style="color: #F7F4EC">CONTACT</a>
         <a href="privacy.html" style="color: #F7F4EC">PRIVACY</a>
         <a href="terms.html" style="color: #F7F4EC">TERMS</a>
         <a href="refund.html" style="color: #F7F4EC">REFUNDS</a>
@@ -410,138 +349,7 @@ const reveal = new IntersectionObserver((entries) => entries.forEach((en) => {
   if (en.isIntersecting) { en.target.classList.add("in"); reveal.unobserve(en.target); }
 }), { rootMargin: "0px 0px -10% 0px" });
 document.querySelectorAll(".rv").forEach((el) => reveal.observe(el));
-
-// Google Apps Script web app (apps-script/Code.gs) that receives both forms.
-const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbxBll4z7N6UnZTaHdrv1axAH2No23ykzTjvPmWX57CXaaP3m_xE3NWouUgUg0dIaM3nPg/exec";
-const CONTACT_EMAIL = "tim.kim@k-nex.com";
-
-// Screenshot attachments for the contact form: paste, drop or browse; large images are shrunk before upload.
-const MAX_FILES = 5;
-const KEEP_BYTES = 1.5 * 1024 * 1024;
-const MAX_SIDE = 2000;
-const contact = document.querySelector("form[data-kind=contact]");
-const drop = contact.querySelector(".knex-drop");
-const picker = contact.querySelector("#contact-files");
-const thumbs = contact.querySelector(".knex-thumbs");
-const attachments = [];
-
-const readBase64 = (blob) => new Promise((resolve, reject) => {
-  const reader = new FileReader();
-  reader.onload = () => resolve(reader.result.split(",")[1]);
-  reader.onerror = reject;
-  reader.readAsDataURL(blob);
-});
-
-async function shrink(file) {
-  if (file.size <= KEEP_BYTES) return file;
-  const bitmap = await createImageBitmap(file);
-  const scale = Math.min(1, MAX_SIDE / Math.max(bitmap.width, bitmap.height));
-  const canvas = document.createElement("canvas");
-  canvas.width = Math.round(bitmap.width * scale);
-  canvas.height = Math.round(bitmap.height * scale);
-  canvas.getContext("2d").drawImage(bitmap, 0, 0, canvas.width, canvas.height);
-  return new Promise((resolve) => canvas.toBlob(resolve, "image/jpeg", 0.85));
-}
-
-function renderThumbs() {
-  thumbs.replaceChildren(...attachments.map((a, i) => {
-    const li = document.createElement("li");
-    const img = document.createElement("img");
-    img.src = a.url;
-    img.alt = `Screenshot ${i + 1}`;
-    const remove = document.createElement("button");
-    remove.type = "button";
-    remove.textContent = "×";
-    remove.setAttribute("aria-label", `Remove screenshot ${i + 1}`);
-    remove.addEventListener("click", () => {
-      URL.revokeObjectURL(a.url);
-      attachments.splice(i, 1);
-      renderThumbs();
-    });
-    li.append(img, remove);
-    return li;
-  }));
-}
-
-async function addFiles(files) {
-  const status = contact.querySelector(".knex-status");
-  const images = [...files].filter((f) => /^image\/(png|jpeg|webp|gif)$/.test(f.type));
-  const room = MAX_FILES - attachments.length;
-  status.textContent = images.length > room ? `You can attach up to ${MAX_FILES} screenshots.` : "";
-  status.className = "knex-status" + (status.textContent ? " err" : "");
-  for (const file of images.slice(0, Math.max(room, 0))) {
-    try {
-      const blob = await shrink(file);
-      attachments.push({ blob, url: URL.createObjectURL(blob) });
-    } catch {
-      status.textContent = "One of the images couldn’t be read. Try a PNG or JPG.";
-      status.className = "knex-status err";
-    }
-  }
-  renderThumbs();
-}
-
-function clearAttachments() {
-  attachments.forEach((a) => URL.revokeObjectURL(a.url));
-  attachments.length = 0;
-  renderThumbs();
-}
-
-picker.addEventListener("change", () => { addFiles(picker.files); picker.value = ""; });
-contact.addEventListener("paste", (e) => {
-  if (e.clipboardData.files.length) { e.preventDefault(); addFiles(e.clipboardData.files); }
-});
-drop.addEventListener("dragover", (e) => { e.preventDefault(); drop.classList.add("over"); });
-drop.addEventListener("dragleave", () => drop.classList.remove("over"));
-drop.addEventListener("drop", (e) => { e.preventDefault(); drop.classList.remove("over"); addFiles(e.dataTransfer.files); });
-
-async function send(form) {
-  const payload = { form: form.dataset.kind, email: form.elements.email.value };
-  if (form === contact) {
-    payload.name = form.elements.name.value;
-    payload.message = form.elements.message.value;
-    payload.files = await Promise.all(attachments.map(async (a) => ({ type: a.blob.type, data: await readBase64(a.blob) })));
-  }
-  // A plain-text body keeps this a simple CORS request, which Apps Script accepts.
-  const res = await fetch(FORM_ENDPOINT, { method: "POST", body: JSON.stringify(payload) });
-  const result = await res.json();
-  if (!result.ok) throw new Error(result.error);
-}
-
-document.querySelectorAll("form[data-kind]").forEach((form) => {
-  const status = form.querySelector(".knex-status");
-  const button = form.querySelector("button[type=submit]");
-  const label = button.textContent;
-  const say = (text, kind) => { status.textContent = text; status.className = "knex-status" + (kind ? " " + kind : ""); };
-
-  form.addEventListener("input", (e) => e.target.removeAttribute("aria-invalid"));
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const invalid = [...form.elements].filter((el) => el.willValidate && !el.checkValidity());
-    invalid.forEach((el) => el.setAttribute("aria-invalid", "true"));
-    if (invalid.length) {
-      say(invalid[0].type === "email" ? "Please enter a valid email address." : "Please fill in the required fields.", "err");
-      invalid[0].focus();
-      return;
-    }
-    if (form.elements._gotcha.value) return;
-
-    button.disabled = true;
-    button.textContent = "Sending…";
-    say("");
-    try {
-      await send(form);
-      form.reset();
-      if (form === contact) clearAttachments();
-      say(form.dataset.kind === "contact" ? "Thanks. Your message is in. We’ll reply by email." : "You’re on the list. We’ll email you when NexMove launches.", "ok");
-    } catch {
-      say(`Something went wrong. Please email ${CONTACT_EMAIL} instead.`, "err");
-    } finally {
-      button.disabled = false;
-      button.textContent = label;
-    }
-  });
-});
 </script>
+<script src="/early-access.js"></script>
 </body>
 </html>
