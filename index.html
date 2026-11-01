@@ -44,6 +44,12 @@ summary::-webkit-details-marker{display:none}
 .m-menu nav a:hover{background:#F7F4EC}
 .knex-btn:disabled{opacity:.6;cursor:wait}
 .hero-bg{position:absolute;top:120px;right:max(24px,calc(50% - 626px));width:min(500px,40%);height:auto;pointer-events:none}
+.lockup{display:flex;align-items:center;gap:14px;margin:0 0 32px}
+.lockup svg{width:56px;height:56px;flex:none;border-radius:14px;box-shadow:0 8px 20px rgba(31,71,184,.25)}
+.lockup .name{margin:0;font-size:30px;line-height:1.05;font-weight:700;letter-spacing:-.03em;color:#0F1A33}
+.lockup .sub{margin:4px 0 0;font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#5A6275}
+.lockup .soon{white-space:nowrap}
+.lockup .soon i{display:inline-block;width:7px;height:7px;margin:0 6px 1px 4px;border-radius:50%;background:#1E9E7A;animation:knexPulse 1.8s ease-in-out infinite}
 .hero-strip{display:block;width:100%;height:auto}
 .hero-in{padding:120px 24px 104px}
 .pad{padding:96px 24px}
@@ -86,7 +92,7 @@ summary::-webkit-details-marker{display:none}
 {
   "@context": "https://schema.org",
   "@graph": [
-    { "@type": "Organization", "@id": "https://k-nex.com/#org", "name": "K-NEX", "url": "https://k-nex.com/", "logo": "https://k-nex.com/apple-touch-icon.png", "email": "tim.kim@k-nex.com", "address": { "@type": "PostalAddress", "addressCountry": "GB" } },
+    { "@type": "Organization", "@id": "https://k-nex.com/#org", "name": "K-NEX", "url": "https://k-nex.com/", "logo": "https://k-nex.com/apple-touch-icon.png", "email": "hello@k-nex.com", "address": { "@type": "PostalAddress", "addressCountry": "GB" } },
     { "@type": "WebSite", "@id": "https://k-nex.com/#website", "url": "https://k-nex.com/", "name": "K-NEX", "publisher": { "@id": "https://k-nex.com/#org" } }
   ]
 }
@@ -97,7 +103,7 @@ summary::-webkit-details-marker{display:none}
 
   <header style="border-bottom: 1px solid #E7E2D6">
     <div class="hdr" style="position: relative; max-width: 1240px; margin: 0 auto; padding: 12px 24px; min-height: 72px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between">
-      <a href="/" aria-label="K-NEX home" style="display: inline-flex; align-items: center; color: #0F1A33"><svg viewBox="0 0 610 136" width="126" height="28" aria-hidden="true" focusable="false"><g transform="scale(1.1333)"><defs><clipPath id="kxh"><rect width="120" height="120" rx="20"/></clipPath></defs><g clip-path="url(#kxh)"><rect width="120" height="120" fill="#1F47B8"/><circle cx="27" cy="26" r="9" fill="#F7F4EC"/><circle cx="93" cy="26" r="9" fill="#E5432F"/><path d="M-14 102L12 70L38 102Z" fill="#157A5F"/><path d="M82 102L108 70L134 102Z" fill="#157A5F"/><path d="M10 102L36 52L62 102Z" fill="#1E9E7A"/><path d="M58 102L84 52L110 102Z" fill="#1E9E7A"/><path d="M32 102L60 34L88 102Z" fill="#23B08A"/><rect y="102" width="120" height="18" fill="#163A99"/></g></g><g transform="translate(190 18)"><path fill="#1F47B8" stroke="#1F47B8" stroke-width="6" stroke-linejoin="round" d="M0 0H22V100H0Z M22 38L54 0H82L22 66Z M40 44L84 100H56L26 60Z"/><rect x="104" y="42" width="34" height="16" rx="8" fill="currentColor"/><path fill="currentColor" transform="translate(-20 0)" d="M172 0H192V100H172Z M236 0H256V100H236Z M172 0H198L256 100H230Z M270 0H290V100H270Z M270 0H338V20H270Z M270 40H330V60H270Z M270 80H338V100H270Z M352 0H378L436 100H410Z M410 0H436L378 100H352Z"/></g></svg></a>
+      <a href="/" aria-label="K-NEX home" style="display: inline-flex; align-items: center; color: #0F1A33"><svg viewBox="0 0 610 136" width="126" height="28" aria-hidden="true" focusable="false"><g transform="scale(1.1333)"><defs><clipPath id="kxh"><rect width="120" height="120" rx="20"/></clipPath></defs><g clip-path="url(#kxh)"><rect width="120" height="120" fill="#1F47B8"/><circle cx="27" cy="26" r="9" fill="#F7F4EC"/><circle cx="93" cy="26" r="9" fill="#E5432F"/><path d="M-14 102L3.68 80.24Q12 68 20.32 80.24L38 102Z" fill="#157A5F"/><path d="M82 102L99.68 80.24Q108 68 116.32 80.24L134 102Z" fill="#157A5F"/><path d="M10 102L27.68 68Q36 50 44.32 68L62 102Z" fill="#1E9E7A"/><path d="M58 102L75.68 68Q84 50 92.32 68L110 102Z" fill="#1E9E7A"/><path d="M32 102L51.04 55.76Q60 32 68.96 55.76L88 102Z" fill="#23B08A"/><rect y="102" width="120" height="18" fill="#163A99"/></g></g><g transform="translate(190 18)"><path fill="#1F47B8" stroke="#1F47B8" stroke-width="6" stroke-linejoin="round" d="M0 0H22V100H0Z M22 38L54 0H82L22 66Z M40 44L84 100H56L26 60Z"/><rect x="104" y="42" width="34" height="16" rx="8" fill="currentColor"/><path fill="currentColor" transform="translate(-20 0)" d="M172 0H192V100H172Z M236 0H256V100H236Z M172 0H198L256 100H230Z M270 0H290V100H270Z M270 0H338V20H270Z M270 40H330V60H270Z M270 80H338V100H270Z M352 0H378L436 100H410Z M410 0H436L378 100H352Z"/></g></svg></a>
       <nav class="top-nav" aria-label="Main" style="display: flex; flex-wrap: wrap; gap: 32px; font-size: 14px; align-items: center">
         <a class="nav-a" href="nexmove/" style="color: #4A5263; text-decoration: none">NexMove</a>
         <a class="nav-a" href="guides/" style="color: #4A5263; text-decoration: none">Guides</a>
@@ -112,12 +118,9 @@ summary::-webkit-details-marker{display:none}
   <section id="top" style="position: relative; overflow: hidden; background-color: #F7F4EC; background-image: linear-gradient(#ECE7DC 1px, transparent 1px), linear-gradient(90deg, #ECE7DC 1px, transparent 1px); background-size: 64px 64px">
     <img class="hero-bg" src="img/hero-faint.svg" width="520" height="500" alt="" aria-hidden="true">
     <div class="hero-in" style="max-width: 1240px; margin: 0 auto; position: relative">
-      <p style="margin: 0 0 36px; display: inline-flex; gap: 10px; align-items: center; font-family: 'Satoshi', sans-serif; font-weight: 500; letter-spacing: 0.06em; font-size: 13px; color: #5A6275; border: 1px solid #E2DCCF; background: #FFFFFF; padding: 8px 14px; border-radius: 999px">
-        <span style="width: 8px; height: 8px; border-radius: 50%; background: #1E9E7A; animation: knexPulse 1.8s ease-in-out infinite"></span>
-        <span><span class="desk-only">NEXMOVE BY K-NEX · </span>COMING SOON FOR WINDOWS</span>
-      </p>
+      <div class="lockup"><svg viewBox="0 0 120 120" aria-hidden="true" focusable="false"><defs><clipPath id="nmh"><rect width="120" height="120" rx="26"/></clipPath></defs><g clip-path="url(#nmh)"><rect width="120" height="120" fill="#1F47B8"/><circle cx="27" cy="26" r="9" fill="#F7F4EC"/><circle cx="93" cy="26" r="9" fill="#E5432F"/><path d="M-14 102L3.68 80.24Q12 68 20.32 80.24L38 102Z" fill="#157A5F"/><path d="M82 102L99.68 80.24Q108 68 116.32 80.24L134 102Z" fill="#157A5F"/><path d="M10 102L27.68 68Q36 50 44.32 68L62 102Z" fill="#1E9E7A"/><path d="M58 102L75.68 68Q84 50 92.32 68L110 102Z" fill="#1E9E7A"/><path d="M32 102L51.04 55.76Q60 32 68.96 55.76L88 102Z" fill="#23B08A"/><rect y="102" width="120" height="18" fill="#163A99"/></g></svg><div><p class="name">NexMove</p><p class="sub">by K-NEX <span class="soon"><i></i>Coming soon for Windows</span></p></div></div>
       <h1 style="margin: 0 0 28px; font-size: clamp(40px, 9vw, 76px); line-height: 1.04; font-weight: 700; letter-spacing: -0.045em; max-width: 700px">Leaving Dropbox or OneDrive?<br><span style="color: #1F47B8">Copy every file safely, then cancel.</span></h1>
-      <p style="margin: 0 0 40px; font-size: 20px; color: #4A5263; max-width: 620px">NexMove is a simple Windows app from K-NEX. It copies everything to Google Drive or OneDrive on your own PC, checks every file, and never deletes your originals.</p>
+      <p style="margin: 0 0 40px; font-size: 20px; color: #4A5263; max-width: 620px">A simple Windows app that copies everything to Google Drive or OneDrive on your own PC, checks every file, and never deletes your originals.</p>
       <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center">
         <a href="#early" style="background: #D2392A; color: #FFFFFF; padding: 16px 26px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 15px">Get early access</a>
         <a href="#how" style="border: 1px solid #D6D0C2; color: #0F1A33; padding: 15px 26px; border-radius: 999px; text-decoration: none; font-weight: 500; font-size: 15px">See how it works</a>
@@ -319,7 +322,7 @@ summary::-webkit-details-marker{display:none}
 
   <footer style="background: #163A99 url(img/waves.svg) top left / 80px 40px repeat-x; padding-top: 40px">
     <div style="max-width: 1240px; margin: 0 auto; padding: 32px 24px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; font-family: 'Satoshi', sans-serif; font-weight: 500; letter-spacing: 0.06em; font-size: 12px; color: rgba(247,244,236,.8)">
-      <span>© 2026 K-NEX</span>
+      <span>© 2026 K-NEX · YOUR NEXT, MADE EASY</span>
       <span style="display: flex; flex-wrap: wrap; gap: 24px">
         <a href="about/" style="color: #F7F4EC">ABOUT</a>
         <a href="contact/" style="color: #F7F4EC">CONTACT</a>
@@ -328,7 +331,7 @@ summary::-webkit-details-marker{display:none}
         <a href="refund.html" style="color: #F7F4EC">REFUNDS</a>
         <a href="nexmove/" style="color: #F7F4EC">NEXMOVE</a>
         <a href="guides/" style="color: #F7F4EC">GUIDES</a>
-        <a href="mailto:tim.kim@k-nex.com" style="color: #F7F4EC">tim.kim@k-nex.com</a>
+        <a href="mailto:hello@k-nex.com" style="color: #F7F4EC">hello@k-nex.com</a>
       </span>
     </div>
   </footer>

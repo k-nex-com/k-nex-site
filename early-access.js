@@ -1,7 +1,7 @@
 // Early-access form for product and guide pages. Posts to the same Google Apps Script web app
 // as index.html (apps-script/Code.gs); data-source on the form tells the sheet which page it came from.
 const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbxBll4z7N6UnZTaHdrv1axAH2No23ykzTjvPmWX57CXaaP3m_xE3NWouUgUg0dIaM3nPg/exec";
-const CONTACT_EMAIL = "tim.kim@k-nex.com";
+const CONTACT_EMAIL = "hello@k-nex.com";
 
 document.querySelectorAll("form[data-kind=early-access]").forEach((form) => {
   const status = form.querySelector(".knex-status");
