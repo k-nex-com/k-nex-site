@@ -84,6 +84,50 @@ summary::-webkit-details-marker{display:none}
 .knex-btn:focus-visible,.knex-input:focus-visible{outline:2px solid #1F47B8;outline-offset:3px}
 .knex-status{margin:12px 0 0;min-height:1.6em;font-family:'Satoshi',sans-serif;font-size:13px;color:#4A5263}
 .knex-status.ok{color:#1F47B8}.knex-status.err{color:#C93A2C}
+/* Hero card: the worries people have about moving, answered one at a time while files fly across.
+   Wide screens: beside the headline, over the faint peaks. Narrower: under the buttons. */
+.story{position:relative;z-index:1;box-sizing:border-box;width:100%;max-width:560px;margin:44px 0 0;padding:22px 24px 20px;background:#FFFFFF;border:1px solid #E2DCCF;border-radius:20px;box-shadow:0 24px 60px rgba(15,26,51,.12)}
+@media (min-width:1280px){.story{position:absolute;top:168px;right:24px;width:440px;margin:0}}
+.story-k{margin:0 0 14px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#6E7586}
+.story-move{display:flex;align-items:center;gap:12px}
+.story-tile{flex:none;display:flex;align-items:center;gap:10px;font-size:14px;line-height:1.2}
+.story-tile b{display:block;font-weight:700;color:#0F1A33}
+.story-tile small{display:block;font-size:12px;color:#6E7586}
+.story-tile svg{flex:none;width:36px;height:36px}
+.story-track{position:relative;flex:1;height:36px;overflow:hidden}
+.story-track::before{content:"";position:absolute;left:2px;right:2px;top:50%;border-top:2px dashed #D6D0C2}
+.story-file{position:absolute;top:50%;left:0;width:16px;height:20px;margin-top:-10px;color:#1F47B8;opacity:0}
+.story-scenes{position:relative;height:118px;margin-top:16px;border-top:1px solid #EFEAE0}
+.story-sc{position:absolute;inset:14px 0 0 0;opacity:0}
+.story-q{margin:0 0 8px;font-size:15px;font-style:italic;color:#5A6275}
+.story-a{margin:0;display:flex;gap:10px;align-items:flex-start;font-size:16px;font-weight:600;line-height:1.4;color:#0F1A33}
+.story-a i{flex:none;display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;margin-top:1px;border-radius:50%;background:#1E9E7A;color:#FFFFFF;font-style:normal;font-size:13px}
+.story-dots{display:flex;gap:6px;margin-top:4px}
+@media (max-width:560px){.story{padding:20px 18px 18px}.story-scenes{height:150px}.story-tile{font-size:13px}.story-tile svg{width:32px;height:32px}}
+.story-dots i{display:block;width:6px;height:6px;border-radius:999px;background:#D6D0C2}
+@media (prefers-reduced-motion: no-preference){
+  .story-file{animation:storyFly 2.4s ease-in-out infinite}
+  .story-file:nth-child(2){animation-delay:.8s}.story-file:nth-child(3){animation-delay:1.6s}
+  .story-sc{animation:storyScene 20s infinite}
+  .story-q{animation:storyQ 20s infinite}
+  .story-a{animation:storyA 20s infinite}
+  .story-dots i{animation:storyDot 20s infinite}
+  .story-sc:nth-child(2),.story-sc:nth-child(2) *,.story-dots i:nth-child(2){animation-delay:5s}
+  .story-sc:nth-child(3),.story-sc:nth-child(3) *,.story-dots i:nth-child(3){animation-delay:10s}
+  .story-sc:nth-child(4),.story-sc:nth-child(4) *,.story-dots i:nth-child(4){animation-delay:15s}
+  @keyframes storyFly{0%{left:0;opacity:0;transform:translateY(0)}15%{opacity:1}50%{transform:translateY(-8px)}85%{opacity:1}100%{left:calc(100% - 16px);opacity:0;transform:translateY(0)}}
+  @keyframes storyScene{0%{opacity:0;transform:translateY(8px)}3%,22%{opacity:1;transform:none}25%,100%{opacity:0;transform:translateY(-8px)}}
+  @keyframes storyQ{0%,8%{opacity:1}11%,100%{opacity:.55}}
+  @keyframes storyA{0%,8%{opacity:0;transform:translateX(-6px)}11%,100%{opacity:1;transform:none}}
+  @keyframes storyDot{0%,24.9%{width:22px;background:#1F47B8}25%,100%{width:6px;background:#D6D0C2}}
+}
+/* Without motion: all four answers in a list, no flying files or dots. */
+@media (prefers-reduced-motion: reduce){
+  .story-scenes{height:auto}
+  .story-sc{position:static;opacity:1;padding-top:14px}
+  .story-file:first-child{opacity:1;left:calc(50% - 8px)}
+  .story-dots{display:none}
+}
 .sr,.hp{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 </style>
 <style>html{scroll-behavior:smooth}</style>
@@ -126,6 +170,28 @@ summary::-webkit-details-marker{display:none}
         <a href="#how" style="border: 1px solid #D6D0C2; color: #0F1A33; padding: 15px 26px; border-radius: 999px; text-decoration: none; font-weight: 500; font-size: 15px">See how it works</a>
       </div>
       <p style="margin: 24px 0 0; font-family: 'Satoshi', sans-serif; font-size: 13px; color: #4A5263; max-width: 640px">For Windows 10 and 11 · $19.99 once, no subscription · Free 200 MB test · First 100 early-access members pay $14.99</p>
+
+      <div class="story rv" aria-hidden="true">
+        <p class="story-k">Your worries, answered</p>
+        <div class="story-move">
+          <span class="story-tile"><svg viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="9" fill="#E9EEFA"/><path d="M12 24h12a5 5 0 0 0 .6-9.96A7 7 0 0 0 11.2 16 4 4 0 0 0 12 24z" fill="none" stroke="#1F47B8" stroke-width="2" stroke-linejoin="round"/></svg><span><b>Dropbox</b><small>or OneDrive</small></span></span>
+          <span class="story-track"><span class="story-file"><svg viewBox="0 0 16 20" width="16" height="20"><path d="M2 1h8l4 4v14H2z" fill="#FFFFFF" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 1v4h4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span><span class="story-file"><svg viewBox="0 0 16 20" width="16" height="20"><path d="M2 1h8l4 4v14H2z" fill="#FFFFFF" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 1v4h4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span><span class="story-file"><svg viewBox="0 0 16 20" width="16" height="20"><path d="M2 1h8l4 4v14H2z" fill="#FFFFFF" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M10 1v4h4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span></span>
+          <span class="story-tile"><svg viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="9" fill="#E3F4EE"/><path d="M9 13a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H11a2 2 0 0 1-2-2z" fill="none" stroke="#1E9E7A" stroke-width="2" stroke-linejoin="round"/><path d="M14.5 19l2.5 2.5 4.5-4.5" fill="none" stroke="#1E9E7A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Google Drive</b><small>or OneDrive</small></span></span>
+        </div>
+        <div class="story-scenes">
+          <div class="story-sc"><p class="story-q">“What if a file goes missing?”</p><p class="story-a"><i>✓</i><span>NexMove checks every file after copying, and shows any that need another go.</span></p></div>
+          <div class="story-sc"><p class="story-q">“Will it slow down the Wi-Fi at home?”</p><p class="story-a"><i>✓</i><span>Gentle speed leaves room for TV and video calls. Full speed when you want it.</span></p></div>
+          <div class="story-sc"><p class="story-q">“What should I check before I cancel?”</p><p class="story-a"><i>✓</i><span>A short checklist: shared links, phone photos and where you pay.</span></p></div>
+          <div class="story-sc"><p class="story-q">“Could my originals get deleted?”</p><p class="story-a"><i>✓</i><span>Never. NexMove only reads them and makes a copy.</span></p></div>
+        </div>
+        <div class="story-dots"><i></i><i></i><i></i><i></i></div>
+      </div>
+      <ul class="sr">
+        <li>What if a file goes missing? NexMove checks every file after copying, and shows any that need another go.</li>
+        <li>Will it slow down the Wi-Fi at home? Gentle speed leaves room for TV and video calls. Full speed when you want it.</li>
+        <li>What should I check before I cancel? A short checklist: shared links, phone photos and where you pay.</li>
+        <li>Could my originals get deleted? Never. NexMove only reads them and makes a copy.</li>
+      </ul>
 
       <div class="mock rv" style="margin-top: 88px">
       <div style="background: #FFFFFF; border: 1px solid #E2DCCF; border-radius: 18px; overflow: hidden; box-shadow: 0 24px 60px rgba(15,26,51,0.12)">
