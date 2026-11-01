@@ -37,10 +37,38 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
 #contact .knex-status{color:#F7F4EC}#contact .knex-status.err{color:#FFD5CF}#contact .knex-status.ok{color:#C7F2E2}
 #contact a{color:#F7F4EC}
 .knex-btn:disabled{opacity:.6;cursor:wait}
-.hero-bg{position:absolute;top:120px;right:max(0px,calc(50% - 650px));width:min(560px,46%);height:auto;opacity:.75;pointer-events:none}
-/* Phones: the picture sat behind the text, so leave it out; keep only the logo and the main button in the menu. */
-@media (max-width:720px){.hero-bg{display:none}.nav-a{display:none}.cta-band{padding-bottom:120px!important}.desk-only{display:none}}
+.hero-bg{position:absolute;top:120px;right:max(24px,calc(50% - 626px));width:min(500px,40%);height:auto;pointer-events:none}
+.hero-strip{display:block;width:100%;height:auto}
+.hero-in{padding:120px 24px 104px}
+.pad{padding:96px 24px}
+.on-blue{color:#F7F4EC}.on-blue a{color:#FFFFFF}
+.film{position:relative;margin:0;border-radius:18px;overflow:hidden;background:#0F1A33;box-shadow:0 24px 60px rgba(15,26,51,.16)}
+.film video{display:block;width:100%;height:auto}
+.film-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border:0;padding:0;background:linear-gradient(rgba(15,26,51,.05),rgba(15,26,51,.3));color:#FFFFFF;font:inherit;font-size:16px;font-weight:700;cursor:pointer}
+.film-play .pill{display:inline-flex;align-items:center;gap:14px;padding:8px 22px 8px 8px;border-radius:999px;background:rgba(15,26,51,.9);box-shadow:0 12px 32px rgba(15,26,51,.35)}
+.film-play .dot{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:#D2392A}
+.film-play:hover .dot{background:#B42F22}.film-play:focus-visible{outline:3px solid #F0A73A;outline-offset:-6px}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.steps li{display:flex;gap:18px;align-items:flex-start;background:#F7F4EC;border:1px solid #E7E2D6;border-radius:16px;padding:20px}
+.steps svg{flex:none;width:64px;height:64px}
+/* The wide picture only fits beside the headline on wide screens; narrower screens get the strip under the buttons. */
+@media (max-width:1279px){.hero-bg{display:none}}
+@media (min-width:1280px){.hero-strip{display:none}}
+/* Phones: keep only the logo and the main button in the menu, show the film instead of the long sample screen, and tighten spacing. */
+@media (max-width:720px){.nav-a{display:none}.cta-band{padding-bottom:120px!important}.desk-only{display:none}.hero-in{padding:56px 20px 40px}.pad{padding:64px 20px}.mock{display:none}}
 @media (min-width:721px){.phone-only{display:none}}
+/* Gentle reveal on scroll, and the sample screen filling up; only when scripts run and motion is welcome. */
+@media (prefers-reduced-motion: no-preference){
+  .js .rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .js .rv.in{opacity:1;transform:none}
+  @keyframes knexFill{from{width:0}to{width:72%}}
+  @keyframes knexLine{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:none}}
+  .js .mock .fill{width:0}
+  .js .mock.in .fill{animation:knexFill 2.2s cubic-bezier(.3,.7,.3,1) .3s forwards}
+  .js .mock .log>div{opacity:0}
+  .js .mock.in .log>div{animation:knexLine .5s ease forwards}
+  .js .mock.in .log>div:nth-of-type(2){animation-delay:.6s}.js .mock.in .log>div:nth-of-type(3){animation-delay:1.2s}.js .mock.in .log>div:nth-of-type(4){animation-delay:1.8s}
+}
 .knex-btn:focus-visible,.knex-input:focus-visible{outline:2px solid #1F47B8;outline-offset:3px}
 .knex-status{margin:12px 0 0;min-height:1.6em;font-family:'JetBrains Mono',monospace;font-size:13px;color:#4A5263}
 .knex-status.ok{color:#1F47B8}.knex-status.err{color:#C93A2C}
@@ -57,6 +85,7 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
 .sr,.hp{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 </style>
 <style>html{scroll-behavior:smooth}</style>
+<script>document.documentElement.classList.add("js")</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -83,12 +112,12 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
     </div>
   </header>
 
-  <section id="top" style="position: relative; overflow: hidden; border-bottom: 1px solid #E7E2D6; background-color: #F7F4EC; background-image: linear-gradient(#ECE7DC 1px, transparent 1px), linear-gradient(90deg, #ECE7DC 1px, transparent 1px); background-size: 64px 64px">
+  <section id="top" style="position: relative; overflow: hidden; background-color: #F7F4EC; background-image: linear-gradient(#ECE7DC 1px, transparent 1px), linear-gradient(90deg, #ECE7DC 1px, transparent 1px); background-size: 64px 64px">
     <img class="hero-bg" src="img/hero-bg.svg" width="520" height="500" alt="" aria-hidden="true">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 120px 24px 104px; position: relative">
+    <div class="hero-in" style="max-width: 1240px; margin: 0 auto; position: relative">
       <p style="margin: 0 0 36px; display: inline-flex; gap: 10px; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5A6275; border: 1px solid #E2DCCF; background: #FFFFFF; padding: 8px 14px; border-radius: 999px">
         <span style="width: 8px; height: 8px; border-radius: 50%; background: #1E9E7A; animation: knexPulse 1.8s ease-in-out infinite"></span>
-        NEXMOVE BY K-NEX · COMING SOON FOR WINDOWS
+        <span><span class="desk-only">NEXMOVE BY K-NEX · </span>COMING SOON FOR WINDOWS</span>
       </p>
       <h1 style="margin: 0 0 28px; font-size: clamp(40px, 9vw, 76px); line-height: 1.04; font-weight: 700; letter-spacing: -0.045em; max-width: 700px">Leaving Dropbox or OneDrive?<br><span style="color: #1F47B8">Copy every file safely, then cancel.</span></h1>
       <p style="margin: 0 0 40px; font-size: 20px; color: #4A5263; max-width: 620px">NexMove is a simple Windows app from K-NEX. It copies everything to Google Drive or OneDrive on your own PC, checks every file, and never deletes your originals.</p>
@@ -98,7 +127,8 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
       </div>
       <p style="margin: 24px 0 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A5263; max-width: 640px">For Windows 10 and 11 · $19.99 once, no subscription · Free 200 MB test · First 100 early-access members pay $14.99</p>
 
-      <div style="margin-top: 88px; background: #FFFFFF; border: 1px solid #E2DCCF; border-radius: 18px; overflow: hidden; box-shadow: 0 24px 60px rgba(15,26,51,0.12)">
+      <div class="mock rv" style="margin-top: 88px">
+      <div style="background: #FFFFFF; border: 1px solid #E2DCCF; border-radius: 18px; overflow: hidden; box-shadow: 0 24px 60px rgba(15,26,51,0.12)">
         <div style="height: 44px; display: flex; align-items: center; gap: 8px; padding: 0 16px; border-bottom: 1px solid #E7E2D6">
           <span style="width: 11px; height: 11px; border-radius: 50%; background: #D6D0C2"></span>
           <span style="width: 11px; height: 11px; border-radius: 50%; background: #D6D0C2"></span>
@@ -124,7 +154,7 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
             </div>
             <div>
               <div style="display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 12px"><span style="font-weight: 500">Copying your files</span><span style="font-family: 'JetBrains Mono', monospace; color: #4A5263">72% · about 14 min left</span></div>
-              <div style="height: 6px; background: #E7E2D6; border-radius: 999px; overflow: hidden"><div style="width: 72%; height: 100%; background: #1F47B8; border-radius: 999px"></div></div>
+              <div style="height: 6px; background: #E7E2D6; border-radius: 999px; overflow: hidden"><div class="fill" style="width: 72%; height: 100%; background: #1F47B8; border-radius: 999px"></div></div>
             </div>
             <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; font-family: 'JetBrains Mono', monospace">
               <div style="border: 1px solid #E7E2D6; border-radius: 10px; padding: 14px"><p style="margin: 0; font-size: 11px; color: #6E7586">VERIFIED</p><p style="margin: 2px 0 0; font-size: 18px">3,465</p></div>
@@ -132,7 +162,7 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
               <div style="border: 1px solid #E7E2D6; border-radius: 10px; padding: 14px"><p style="margin: 0; font-size: 11px; color: #6E7586">ERRORS</p><p style="margin: 2px 0 0; font-size: 18px">0</p></div>
             </div>
           </div>
-          <div style="flex: 1 1 320px; min-width: 0; padding: 32px; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 2.1; color: #5A6275">
+          <div class="log" style="flex: 1 1 320px; min-width: 0; padding: 32px; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 2.1; color: #5A6275">
             <p style="margin: 0 0 8px; font-size: 11px; color: #6E7586">LOG</p>
             <div><span style="color: #1E9E7A">✓</span> Photos/2024 Trip — verified</div>
             <div><span style="color: #1E9E7A">✓</span> Documents/Taxes — verified</div>
@@ -142,7 +172,9 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
         </div>
       </div>
       <p style="margin: 14px 0 0; font-size: 13px; color: #4A5263; text-align: center">Example screen with sample numbers. The app may change before launch.</p>
+      </div>
     </div>
+    <img class="hero-strip" src="img/hero-strip.svg" width="780" height="210" alt="" aria-hidden="true">
   </section>
 
   <div style="background: #1F47B8; overflow: hidden; padding: 22px 0" aria-hidden="true">
@@ -152,70 +184,96 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
     </div>
   </div>
 
-  <section id="how" style="border-bottom: 1px solid #E7E2D6">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 128px 24px">
+  <section id="how" style="background: #FFFFFF; border-bottom: 1px solid #E7E2D6">
+    <div class="pad" style="max-width: 1240px; margin: 0 auto">
       <p style="margin: 0 0 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #1F47B8">/ HOW IT WORKS</p>
-      <h2 style="margin: 0 0 56px; font-size: clamp(34px, 7vw, 48px); line-height: 1.1; font-weight: 700; letter-spacing: -0.04em; max-width: 760px">Three steps. Nothing to set up.</h2>
-      <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: #E2DCCF; border: 1px solid #E2DCCF; border-radius: 18px; overflow: hidden">
-        <li style="background: #FFFFFF; padding: 36px; box-shadow: inset 0 5px 0 #1F47B8">
-          <p style="margin: 0 0 24px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #1F47B8">01 · PICK YOUR MOVE</p>
-          <h3 style="margin: 0 0 10px; font-size: 22px; font-weight: 600; letter-spacing: -0.02em">Where your files are, and where they go</h3>
-          <p style="margin: 0; color: #4A5263; font-size: 16px">Dropbox to Google Drive, Dropbox to OneDrive, or OneDrive to Google Drive.</p>
-        </li>
-        <li style="background: #FFFFFF; padding: 36px; box-shadow: inset 0 5px 0 #F0A73A">
-          <p style="margin: 0 0 24px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A5263">02 · SIGN IN TO BOTH</p>
-          <h3 style="margin: 0 0 10px; font-size: 22px; font-weight: 600; letter-spacing: -0.02em">On their own pages</h3>
-          <p style="margin: 0; color: #4A5263; font-size: 16px">You sign in on Dropbox’s, Microsoft’s and Google’s own pages, so NexMove never sees your passwords. It checks there is enough room before anything starts.</p>
-        </li>
-        <li style="background: #FFFFFF; padding: 36px; box-shadow: inset 0 5px 0 #1E9E7A">
-          <p style="margin: 0 0 24px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #157A5F">03 · PRESS START</p>
-          <h3 style="margin: 0 0 10px; font-size: 22px; font-weight: 600; letter-spacing: -0.02em">Copied, then checked</h3>
-          <p style="margin: 0; color: #4A5263; font-size: 16px">Your files go into a new folder, then NexMove checks that each one arrived at the same size as the original. If it stops, it copies only what is left next time.</p>
-        </li>
-      </ol>
-      <div style="margin-top: 32px; padding: 24px 28px; border-left: 3px solid #1F47B8; background: #FFFFFF; border-radius: 0 14px 14px 0; display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: center; justify-content: space-between">
+      <h2 style="margin: 0 0 48px; font-size: clamp(34px, 7vw, 48px); line-height: 1.1; font-weight: 700; letter-spacing: -0.04em; max-width: 760px">Three steps. Nothing to set up.</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: center">
+        <div class="rv" style="flex: 1.5 1 520px; min-width: 0">
+          <figure class="film">
+            <video preload="none" playsinline poster="/media/nexmove-film-routes-poster.png" width="1920" height="1080" aria-label="NexMove: one app, three moves">
+              <source src="/media/nexmove-film-routes-65s.mp4" type="video/mp4">
+              <track kind="captions" src="/media/nexmove-film-routes.en.vtt" srclang="en" label="English" default>
+            </video>
+            <button class="film-play" type="button"><span class="pill"><span class="dot" aria-hidden="true"><svg width="20" height="22" viewBox="0 0 26 28"><path d="M4 2.5v23L24 14Z" fill="#FFFFFF"/></svg></span>Watch it in 65 seconds</span></button>
+          </figure>
+          <p style="margin: 12px 0 0; font-size: 13px; color: #4A5263">Preview. App screens are from our design and may change before launch. The two OneDrive moves are still being tested.</p>
+        </div>
+        <ol class="steps rv" style="flex: 1 1 340px; min-width: 0">
+          <li>
+            <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#E9EEFA"/><rect x="12" y="14" width="40" height="9" rx="4.5" fill="#FFFFFF" stroke="#C9D3EE"/><rect x="12" y="27.5" width="40" height="9" rx="4.5" fill="#1F47B8"/><path d="M38 32h8m-3-3 3 3-3 3" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="12" y="41" width="40" height="9" rx="4.5" fill="#FFFFFF" stroke="#C9D3EE"/></svg>
+            <div>
+              <p style="margin: 0 0 4px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #1F47B8">01 · PICK YOUR MOVE</p>
+              <h3 style="margin: 0 0 4px; font-size: 19px; font-weight: 600; letter-spacing: -0.02em">Where your files are, and where they go</h3>
+              <p style="margin: 0; color: #4A5263; font-size: 15px">Dropbox to Google Drive, Dropbox to OneDrive, or OneDrive to Google Drive.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#FDF1DC"/><path d="M24 30v-6a8 8 0 0 1 16 0v6" stroke="#C9851F" stroke-width="4" fill="none"/><rect x="18" y="29" width="28" height="22" rx="5" fill="#F0A73A"/><circle cx="32" cy="38" r="3.2" fill="#FFFFFF"/><path d="M32 40v5" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round"/></svg>
+            <div>
+              <p style="margin: 0 0 4px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8A5A12">02 · SIGN IN TO BOTH</p>
+              <h3 style="margin: 0 0 4px; font-size: 19px; font-weight: 600; letter-spacing: -0.02em">On their own pages</h3>
+              <p style="margin: 0; color: #4A5263; font-size: 15px">You sign in on Dropbox’s, Microsoft’s and Google’s own pages. NexMove never sees your passwords.</p>
+            </div>
+          </li>
+          <li>
+            <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#E3F4EC"/><circle cx="32" cy="25" r="11" fill="#1E9E7A"/><path d="M26.5 25l4 4 7-7.5" stroke="#FFFFFF" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="12" y="42" width="40" height="7" rx="3.5" fill="#FFFFFF"/><rect x="12" y="42" width="40" height="7" rx="3.5" fill="#1E9E7A" opacity=".85"/></svg>
+            <div>
+              <p style="margin: 0 0 4px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #157A5F">03 · PRESS START</p>
+              <h3 style="margin: 0 0 4px; font-size: 19px; font-weight: 600; letter-spacing: -0.02em">Copied, then checked</h3>
+              <p style="margin: 0; color: #4A5263; font-size: 15px">Files go into a new folder, then each one is checked to be the same size as the original. If it stops, it copies only what is left.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+      <div class="rv" style="margin-top: 40px; padding: 24px 28px; border-left: 3px solid #1F47B8; background: #F7F4EC; border-radius: 0 14px 14px 0; display: flex; flex-wrap: wrap; gap: 12px 32px; align-items: center; justify-content: space-between">
         <p style="margin: 0; flex: 1 1 520px; min-width: 0; color: #0F1A33; font-size: 17px">Your files travel from your old cloud, through your own PC, into the new one. No server sits in between — not ours, not anyone’s — and nothing is saved to your hard drive.</p>
         <a href="nexmove/#how" style="font-weight: 600; font-size: 15px">More about how NexMove works →</a>
       </div>
     </div>
   </section>
 
-  <section id="product" style="max-width: 1240px; margin: 0 auto; padding: 128px 24px">
-    <h2 style="margin: 0 0 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 400; color: #1F47B8">/ PRODUCTS</h2>
-    <div style="border: 1px solid #D6D0C2; border-radius: 22px; padding: clamp(28px, 5vw, 48px); background: #FFFFFF; display: flex; flex-wrap: wrap; gap: 40px; align-items: stretch">
-      <div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
-        <span style="align-self: flex-start; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #FFFFFF; background: #157A5F; padding: 4px 10px; border-radius: 999px">COMING SOON FOR WINDOWS</span>
-        <h3 style="margin: 0; font-size: 44px; font-weight: 700; letter-spacing: -0.04em">NexMove</h3>
-        <p style="margin: 0; color: #4A5263; font-size: 18px; max-width: 640px">Stop paying for cloud storage you no longer need, without worrying about your files. NexMove copies everything, checks every file, and never deletes your originals, so you can cancel or downgrade the old plan with confidence.</p>
+  <section id="product" style="background: #163A99">
+    <div class="pad on-blue" style="max-width: 1240px; margin: 0 auto">
+    <h2 style="margin: 0 0 24px; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 400; color: #F0A73A">/ PRODUCTS</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
+      <div class="rv" style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+        <span style="align-self: flex-start; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #FFFFFF; background: #1E9E7A; padding: 4px 10px; border-radius: 999px">COMING SOON FOR WINDOWS</span>
+        <h3 style="margin: 0; font-size: clamp(44px, 8vw, 60px); line-height: 1; font-weight: 700; letter-spacing: -0.04em; color: #FFFFFF">NexMove</h3>
+        <p style="margin: 0; color: rgba(247,244,236,.88); font-size: 18px; max-width: 600px">Stop paying for cloud storage you no longer need, without worrying about your files. NexMove copies everything, checks every file, and never deletes your originals, so you can cancel or downgrade the old plan with confidence.</p>
         <ul aria-label="What NexMove copies, with a free guide for each" style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px">
-          <li><a href="guides/move-dropbox-to-google-drive/" style="display: inline-block; border: 1px solid #D6D0C2; border-radius: 999px; padding: 6px 14px; color: #0F1A33; text-decoration: none">Dropbox <span style="color: #1F47B8">→</span> Google Drive</a></li>
-          <li><a href="guides/move-dropbox-to-onedrive/" style="display: inline-block; border: 1px solid #D6D0C2; border-radius: 999px; padding: 6px 14px; color: #0F1A33; text-decoration: none">Dropbox <span style="color: #1F47B8">→</span> OneDrive</a></li>
-          <li><a href="guides/move-onedrive-to-google-drive/" style="display: inline-block; border: 1px solid #D6D0C2; border-radius: 999px; padding: 6px 14px; color: #0F1A33; text-decoration: none">OneDrive <span style="color: #1F47B8">→</span> Google Drive</a></li>
+          <li><a href="guides/move-dropbox-to-google-drive/" style="display: inline-block; border: 1px solid rgba(247,244,236,.4); border-radius: 999px; padding: 6px 14px; color: #F7F4EC; text-decoration: none">Dropbox <span style="color: #F0A73A">→</span> Google Drive</a></li>
+          <li><a href="guides/move-dropbox-to-onedrive/" style="display: inline-block; border: 1px solid rgba(247,244,236,.4); border-radius: 999px; padding: 6px 14px; color: #F7F4EC; text-decoration: none">Dropbox <span style="color: #F0A73A">→</span> OneDrive</a></li>
+          <li><a href="guides/move-onedrive-to-google-drive/" style="display: inline-block; border: 1px solid rgba(247,244,236,.4); border-radius: 999px; padding: 6px 14px; color: #F7F4EC; text-decoration: none">OneDrive <span style="color: #F0A73A">→</span> Google Drive</a></li>
         </ul>
-        <div style="margin-top: auto; display: flex; flex-wrap: wrap; gap: 24px">
+        <div style="display: flex; flex-wrap: wrap; gap: 24px">
           <a href="nexmove/" style="font-weight: 600; font-size: 15px">Learn more about NexMove →</a>
-          <a href="guides/" style="font-weight: 500; font-size: 15px; color: #4A5263">Free guides for all three moves</a>
+          <a href="guides/" style="font-weight: 500; font-size: 15px; color: rgba(247,244,236,.85)">Free guides for all three moves</a>
         </div>
       </div>
-      <div style="flex: 0 1 340px; min-width: 0; border: 1px solid #E2DCCF; border-radius: 18px; padding: 32px; background: #F7F4EC; display: flex; flex-direction: column; gap: 14px">
+      <div class="rv" style="flex: 0 1 360px; min-width: 0; border-radius: 20px; padding: 32px; background: #FFFFFF; color: #0F1A33; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 24px 60px rgba(8,18,48,.35)">
         <p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A5263">PRICE</p>
-        <p style="margin: 0; font-size: 48px; font-weight: 700; letter-spacing: -0.04em; line-height: 1">$19.99 <span style="font-size: 16px; font-weight: 500; color: #4A5263; letter-spacing: 0">one-time</span></p>
+        <p style="margin: 0; font-size: 48px; font-weight: 700; letter-spacing: -0.04em; line-height: 1">$19.99 <span style="display: inline-block; white-space: nowrap; font-size: 16px; font-weight: 500; color: #4A5263; letter-spacing: 0">one-time</span></p>
         <ul style="margin: 0; padding-left: 1.2em; color: #4A5263; font-size: 15px">
           <li>No subscription</li>
           <li>Free 200 MB test before you pay</li>
           <li>First 100 early-access members pay $14.99</li>
         </ul>
-        <a href="#contact" style="margin-top: auto; align-self: flex-start; background: #D2392A; color: #FFFFFF; padding: 14px 24px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 15px">Get early access</a>
-        <a href="refund.html" style="font-size: 14px">Refund policy</a>
+        <a href="#contact" style="margin-top: 6px; align-self: flex-start; background: #D2392A; color: #FFFFFF; padding: 14px 24px; border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 15px">Get early access</a>
+        <a href="refund.html" style="font-size: 14px; color: #1F47B8">Refund policy</a>
       </div>
+    </div>
     </div>
   </section>
 
-  <section id="founder" style="border-top: 1px solid #E7E2D6; border-bottom: 1px solid #E7E2D6">
+  <section id="founder" style="background: #E3F1EA">
     <h2 class="sr">Founder</h2>
-    <div style="max-width: 1240px; margin: 0 auto; padding: 128px 24px; display: flex; flex-wrap: wrap; gap: 64px; align-items: flex-start">
-      <p style="flex: 2 1 580px; min-width: 0; margin: 0; font-size: 36px; line-height: 1.35; font-weight: 600; letter-spacing: -0.03em">“People aren’t falling behind technology. Technology just hasn’t reached people yet. K-NEX exists to close that last gap.”</p>
-      <div style="flex: 1 1 280px; min-width: 0; border-left: 2px solid #1F47B8; padding-left: 28px; display: flex; flex-direction: column; gap: 18px">
+    <div class="pad" style="max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 48px 64px; align-items: flex-start">
+      <div class="rv" style="flex: 2 1 580px; min-width: 0">
+        <span aria-hidden="true" style="display: block; height: 64px; font-size: 120px; line-height: 1; font-weight: 700; color: #1E9E7A">“</span>
+        <p style="margin: 0; font-size: clamp(26px, 6vw, 36px); line-height: 1.35; font-weight: 600; letter-spacing: -0.03em">People aren’t falling behind technology. Technology just hasn’t reached people yet. K-NEX exists to close that last gap.</p>
+      </div>
+      <div class="rv" style="flex: 1 1 280px; min-width: 0; border-left: 3px solid #1E9E7A; padding-left: 28px; display: flex; flex-direction: column; gap: 18px; align-self: flex-end">
         <div>
           <p style="margin: 0; font-weight: 700; font-size: 18px">Tim Kim</p>
           <p style="margin: 4px 0 0; font-family: 'JetBrains Mono', monospace; color: #4A5263; font-size: 13px">FOUNDER · K-NEX</p>
@@ -226,8 +284,15 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
     </div>
   </section>
 
-  <section id="faq" style="max-width: 1240px; margin: 0 auto; padding: 128px 24px; display: flex; flex-wrap: wrap; gap: 64px">
-    <h2 style="flex: 1 1 280px; min-width: 0; margin: 0; font-size: 44px; font-weight: 700; letter-spacing: -0.04em">FAQ</h2>
+  <section id="faq" class="pad" style="max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px 64px; align-items: flex-start">
+    <div style="flex: 1 1 280px; min-width: 0; position: sticky; top: 24px">
+      <h2 style="margin: 0 0 24px; font-size: 44px; font-weight: 700; letter-spacing: -0.04em">FAQ</h2>
+      <div class="desk-only" style="border-radius: 18px; padding: 24px; background: #FFFFFF; border: 1px solid #E7E2D6">
+        <p style="margin: 0 0 6px; font-weight: 600; font-size: 17px">Still unsure?</p>
+        <p style="margin: 0 0 14px; color: #4A5263; font-size: 15px">Email Tim. You’ll get a reply from the person who builds NexMove.</p>
+        <a href="mailto:tim.kim@k-nex.com" style="font-weight: 600; font-size: 15px">tim.kim@k-nex.com</a>
+      </div>
+    </div>
     <div style="flex: 2 1 580px; min-width: 0; border-top: 1px solid #E2DCCF">
       <details style="border-bottom: 1px solid #E2DCCF; padding: 24px 0"><summary style="display: flex; justify-content: space-between; gap: 16px; font-weight: 600; font-size: 18px">Who is behind K-NEX?<span aria-hidden="true" style="color: #1F47B8">+</span></summary><p style="margin: 14px 0 0; color: #4A5263; font-size: 16px">Tim Kim, a sole trader in the United Kingdom. K-NEX is one person, so when you email, the person who builds NexMove reads it and replies.</p></details>
       <details style="border-bottom: 1px solid #E2DCCF; padding: 24px 0"><summary style="display: flex; justify-content: space-between; gap: 16px; font-weight: 600; font-size: 18px">Can K-NEX see my files?<span aria-hidden="true" style="color: #1F47B8">+</span></summary><p style="margin: 14px 0 0; color: #5A6275; font-size: 16px">No. The app runs only on your computer. Your files go from your Dropbox or OneDrive, through your PC, to your Google Drive or OneDrive, never through our servers or anyone else’s.</p></details>
@@ -255,7 +320,7 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
     </div>
   </section>
 
-  <section id="contact" style="max-width: 1240px; margin: 0 auto; padding: 0 24px 136px">
+  <section id="contact" class="pad" style="max-width: 1240px; margin: 0 auto; padding-top: 0">
     <div class="cta-band" style="border-radius: 26px; overflow: hidden; padding: 72px clamp(24px, 5vw, 48px) 200px; background: #1F47B8 url(img/peaks-band.svg) bottom center / 100% auto no-repeat; color: #F7F4EC; display: flex; flex-wrap: wrap; gap: 40px; align-items: center; justify-content: space-between">
       <div style="flex: 1 1 440px; min-width: 0">
         <h2 style="margin: 0 0 10px; font-size: clamp(34px, 8vw, 52px); line-height: 1.05; font-weight: 700; letter-spacing: -0.04em">Get NexMove <span style="color: #F0A73A">first</span>.</h2>
@@ -274,8 +339,8 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
     </div>
   </section>
 
-  <section id="ask" style="border-top: 1px solid #E7E2D6">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 128px 24px; display: flex; flex-wrap: wrap; gap: 64px">
+  <section id="ask" style="background: #FFFFFF; border-top: 1px solid #E7E2D6">
+    <div class="pad" style="max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 48px 64px">
       <div style="flex: 1 1 380px; min-width: 0">
         <p style="margin: 0 0 16px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #1F47B8">/ CONTACT</p>
         <h2 style="margin: 0 0 20px; font-size: 44px; line-height: 1.1; font-weight: 700; letter-spacing: -0.04em">A question, or an IT headache?</h2>
@@ -330,6 +395,22 @@ textarea.knex-input{height:auto;min-height:140px;padding:16px 22px;border-radius
   </footer>
 </div>
 <script>
+// Film: the poster and our play button show first; the video loads only when asked for.
+const film = document.querySelector(".film");
+film.querySelector(".film-play").addEventListener("click", (e) => {
+  const video = film.querySelector("video");
+  video.controls = true;
+  video.play();
+  e.currentTarget.remove();
+  video.focus();
+});
+
+// Reveal sections as they scroll into view (the CSS only hides them when motion is welcome).
+const reveal = new IntersectionObserver((entries) => entries.forEach((en) => {
+  if (en.isIntersecting) { en.target.classList.add("in"); reveal.unobserve(en.target); }
+}), { rootMargin: "0px 0px -10% 0px" });
+document.querySelectorAll(".rv").forEach((el) => reveal.observe(el));
+
 // Google Apps Script web app (apps-script/Code.gs) that receives both forms.
 const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbxBll4z7N6UnZTaHdrv1axAH2No23ykzTjvPmWX57CXaaP3m_xE3NWouUgUg0dIaM3nPg/exec";
 const CONTACT_EMAIL = "tim.kim@k-nex.com";
