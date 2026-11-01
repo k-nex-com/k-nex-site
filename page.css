@@ -72,7 +72,7 @@ h3{margin:0 0 10px;font-size:22px;font-weight:600;letter-spacing:-0.02em}
 .steps>div::before{counter-increment:step;content:"0" counter(step);display:block;margin:0 0 28px;font-family:'Satoshi',sans-serif;font-weight:500;letter-spacing:.06em;font-size:12px;color:#1F47B8}
 .steps p,.cards p{margin:0;color:#5A6275;font-size:16px}
 
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:20px}
 .cards>div{border:1px solid #E2DCCF;border-radius:18px;padding:32px;background:#FFFFFF;box-shadow:inset 0 5px 0 #1F47B8}
 .cards>div:nth-child(3n+2){box-shadow:inset 0 5px 0 #D2392A}.cards>div:nth-child(3n){box-shadow:inset 0 5px 0 #1E9E7A}
 .cards>div:nth-child(3n+2) .tag{color:#D2392A}.cards>div:nth-child(3n) .tag{color:#1E9E7A}
